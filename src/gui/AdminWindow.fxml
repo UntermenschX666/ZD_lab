@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="430.0" maxWidth="700.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="700.0" style="-fx-background-color: #778899;" xmlns="http://javafx.com/javafx/8.0.162-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminWindowController">
+    <children>
+        <AnchorPane layoutY="99.0" maxHeight="335.0" maxWidth="700.0" prefHeight="335.0" prefWidth="700.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <TableView fx:id="tbvUserList" fixedCellSize="4.0" layoutX="228.0" layoutY="38.0" opacity="0.7" prefHeight="263.0" prefWidth="458.0" stylesheets="@TableView.css">
+              <columns>
+                  <TableColumn fx:id="tbcNumber" prefWidth="28.0" text="№" />
+                <TableColumn fx:id="tbcUsername" prefWidth="97.0" text="Username" />
+                <TableColumn fx:id="tbcPassword" prefWidth="144.0" text="Password" />
+                  <TableColumn fx:id="tbcBlocked" minWidth="0.0" prefWidth="76.0" text="Blocked" />
+                  <TableColumn fx:id="tbcRestrictions" prefWidth="109.0" text="Restrictions" />
+              </columns>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TableView>
+            <Label layoutX="233.0" layoutY="14.0" text="List registered users:" textFill="LIGHTSLATEGRAY">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnAddUser" layoutX="14.0" layoutY="38.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="207.0" style="-fx-background-color: #778899;" text="Add new user" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnRemoveUser" layoutX="14.0" layoutY="85.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="207.0" style="-fx-background-color: #778899;" text="Remove a user" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnEditUser" layoutX="14.0" layoutY="130.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="207.0" style="-fx-background-color: #778899;" text="Edit user data" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnEditPass" layoutX="14.0" layoutY="175.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="207.0" style="-fx-background-color: #778899;" text="Edit my password" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnSaveChanges" layoutX="14.0" layoutY="219.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="207.0" style="-fx-background-color: #778899;" text="Save changes" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnEndSession" layoutX="14.0" layoutY="265.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="207.0" style="-fx-background-color: #778899;" text="End session" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
+        </AnchorPane>
+        <Label layoutX="30.0" layoutY="30.0" prefHeight="50.0" prefWidth="265.0" text="Lab Work №1" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="34.0" />
+            </font>
+        </Label>
+      <Label layoutX="518.0" layoutY="30.0" textFill="WHITE">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Label>
+      <Label layoutX="450.0" layoutY="30.0" prefHeight="50.0" prefWidth="125.0" text="Current objects.User:" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="581.0" layoutY="30.0" minHeight="50.0" text="Admin" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+    </children>
+</AnchorPane>
