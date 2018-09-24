@@ -12,19 +12,15 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import objects.User;
 import objects.UserList;
-
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class AuthorizationWindowController {
 
-    private Stage stgAdmin;
-    private Stage stgUser;
-    private Stage stgAuthorization;
-    private File fUsersList;
-    //private ArrayList<User> Users;
-    private UserList userList;
+    public static UserList userList;
+    public static Stage stgAdmin;
+    public static Stage stgUser;
+    public static Stage stgAuthorization;
 
     @FXML
     private TextField tfLogin;
@@ -46,7 +42,6 @@ public class AuthorizationWindowController {
             stgAdmin.setTitle("Admin");
             stgAdmin.getIcons().add(new Image("/images/icon/icnMainWindow.png"));
             stgAdmin.setScene(new Scene(root));
-            controller.setStage(stgAdmin);
             stgAuthorization.hide();
             stgAdmin.show();
         }
@@ -69,9 +64,11 @@ public class AuthorizationWindowController {
 
     @FXML
     private void initialize(){
-        //Users = new ArrayList<User>();
 
-        fUsersList = new File(".12oad032f78s");
+        File fUsersList = new File(".12oad032f78s");
+
+        userList = new UserList();
+        userList.test();
 
         if (!fUsersList.exists()){
             try {
@@ -87,9 +84,6 @@ public class AuthorizationWindowController {
                 //MassegeBox
                 stgAuthorization.close();
             }
-         //   Users.add(new User("admin","", false,false));
-            userList = new UserList();
-            userList.add(new User("admin","",false,false));
 
 
         }

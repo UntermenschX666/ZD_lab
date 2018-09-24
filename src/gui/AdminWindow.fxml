@@ -12,7 +12,7 @@
     <children>
         <AnchorPane layoutY="99.0" maxHeight="335.0" maxWidth="700.0" prefHeight="335.0" prefWidth="700.0" style="-fx-background-color: #ffffff;">
          <children>
-            <TableView fx:id="tbvUserList" fixedCellSize="0.0" layoutX="228.0" layoutY="38.0" opacity="0.7" prefHeight="263.0" prefWidth="458.0">
+            <TableView fx:id="tbvUserList" fixedCellSize="0.0" layoutX="228.0" layoutY="38.0" opacity="0.7" prefHeight="263.0" prefWidth="458.0" stylesheets="@TableView.css">
               <columns>
                 <TableColumn fx:id="tbcUsername" prefWidth="97.0" text="Username" />
                 <TableColumn fx:id="tbcPassword" prefWidth="144.0" text="Password" />

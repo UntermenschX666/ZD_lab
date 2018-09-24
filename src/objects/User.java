@@ -21,6 +21,22 @@ public class User {
 
     }
 
+    public SimpleStringProperty sstrpUserNameProperty(){
+        return sstrpUserName;
+    }
+
+    public SimpleStringProperty sstrpPasswordProperty(){
+        return sstrpPassword;
+    }
+
+    public SimpleBooleanProperty sbpBlockProperty(){
+        return sbpBlock;
+    }
+
+    public SimpleBooleanProperty sbpRestrictionProperty(){
+        return sbpRestriction;
+    }
+
     public String getUserName(){
         return  sstrpUserName.get();
     }

@@ -1,6 +1,5 @@
 package controllers;
 
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -13,10 +12,9 @@ import objects.UserList;
 public class AdminWindowController {
 
     private Stage stgAdmin;
-    private UserList userList;
 
     @FXML
-    private TableView<User> tbvUserList;
+    private TableView tbvUserList;
 
 
     @FXML
@@ -52,21 +50,13 @@ public class AdminWindowController {
     @FXML
     private void initialize(){
         //test data
-        userList = new UserList();
-        userList.test();
         tbcUsername.setCellValueFactory(new PropertyValueFactory<User,String>("sstrpUserName"));
         tbcPassword.setCellValueFactory(new PropertyValueFactory<User,String>("sstrpPassword"));
-        tbcBlocked.setCellValueFactory(new PropertyValueFactory<User,Boolean>("spbBlock"));
+        tbcBlocked.setCellValueFactory(new PropertyValueFactory<User,Boolean>("sbpBlock"));
         tbcRestrictions.setCellValueFactory(new PropertyValueFactory<User,Boolean>("sbpRestriction"));
-        tbvUserList.setItems(userList.getUsers());
+        tbvUserList.setItems(AuthorizationWindowController.userList.getUsers());
 
     }
 
-    public void setStage(Stage stage){
-        stgAdmin = stage;
-    }
 
-    public void setUserList(UserList userList){
-        this.userList = userList;
-    }
 }

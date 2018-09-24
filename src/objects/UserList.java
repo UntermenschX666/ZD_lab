@@ -1,11 +1,8 @@
 package objects;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
-
 import java.io.Serializable;
-import java.util.ArrayList;
 
 public class UserList implements Serializable {
 
@@ -16,11 +13,11 @@ public class UserList implements Serializable {
     }
 
     public void test(){
-        userList.add(new User("Test1","",false,false));
-        userList.add(new User("Test2","",false,false));
-        userList.add(new User("Test3","",false,false));
-        userList.add(new User("Test4","",false,false));
-        userList.add(new User("Test5","",false,false));
+        userList.add(new User("Test1","123ko",false,false));
+        userList.add(new User("Test2","54sd",false,false));
+        userList.add(new User("Test3","asdad3",false,false));
+        userList.add(new User("Test4","asda3",false,false));
+        userList.add(new User("Test5","aaasd1",false,false));
     }
 
     public ObservableList<User> getUsers() {
