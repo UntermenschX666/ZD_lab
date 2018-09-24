@@ -5,13 +5,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 import objects.User;
-import objects.UserList;
 
 public class AdminWindowController {
-
-    private Stage stgAdmin;
 
     @FXML
     private TableView tbvUserList;

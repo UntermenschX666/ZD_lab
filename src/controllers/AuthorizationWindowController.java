@@ -10,7 +10,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import objects.User;
 import objects.UserList;
 import java.io.File;
 import java.io.IOException;
@@ -52,10 +51,9 @@ public class AuthorizationWindowController {
             Parent root =  (Parent) fxmlLoader.load();
             UserWindowController controller = fxmlLoader.getController();
             stgUser = new Stage();
-            stgUser.setTitle("objects.User");
+            stgUser.setTitle("User");
             stgUser.getIcons().add(new Image("/images/icon/icnMainWindow.png"));
             stgUser.setScene(new Scene(root));
-            controller.setStage(stgUser);
             stgAuthorization.hide();
             stgUser.show();
         }

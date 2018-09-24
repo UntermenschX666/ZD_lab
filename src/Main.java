@@ -8,6 +8,7 @@ import controllers.AuthorizationWindowController;
 
 public class Main extends Application {
 
+    //public static Stage stgAuthorization;
 
     public static void main(String[] args) {
         launch(args);
@@ -15,7 +16,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stgAuthorization) throws Exception{
-
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("/gui/AuthorizationWindow.fxml"));
         Parent root =  (Parent) fxmlLoader.load();

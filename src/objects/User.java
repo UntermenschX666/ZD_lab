@@ -2,7 +2,6 @@ package objects;
 
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.fxml.FXML;
 
 public class User {
 
