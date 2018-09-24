@@ -1,33 +1,36 @@
 package objects;
 
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.fxml.FXML;
+
 public class User {
 
-    private String strUserName;
-    private String strPassword;
-    private boolean bBlock;
-    private boolean bRestriction;
+    private SimpleStringProperty sstrpUserName;
+    private SimpleStringProperty sstrpPassword;
+    private SimpleBooleanProperty sbpBlock;
+    private SimpleBooleanProperty sbpRestriction;
 
-    public User(String strUserName, String strPassword, boolean bBlock, boolean bRestriction){
+    public User(String strUserName,String strPassword,
+                boolean bBlock,boolean bRestriction){
 
-        this.strUserName = strUserName;
-        this.strPassword = strPassword;
-        this.bBlock=bBlock;
-        this.bRestriction=bRestriction;
+        sstrpUserName = new SimpleStringProperty(strUserName);
+        sstrpPassword = new SimpleStringProperty(strPassword);
+        sbpBlock = new SimpleBooleanProperty(bBlock);
+        sbpRestriction = new SimpleBooleanProperty(bRestriction);
 
     }
 
     public String getUserName(){
-        return  strUserName;
+        return  sstrpUserName.get();
     }
 
-    public String getPassword(){
-        return strPassword;
-    }
+    public String getPassword() { return sstrpPassword.get(); }
 
     public boolean isBlocked(){
-        return bBlock;
+        return sbpBlock.get();
     }
     public boolean isRestriction(){
-        return  bRestriction;
+        return  sbpRestriction.get();
     }
 }

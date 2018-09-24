@@ -11,6 +11,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import objects.User;
+import objects.UserList;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,7 +23,8 @@ public class AuthorizationWindowController {
     private Stage stgUser;
     private Stage stgAuthorization;
     private File fUsersList;
-    private ArrayList<User> Users;
+    //private ArrayList<User> Users;
+    private UserList userList;
 
     @FXML
     private TextField tfLogin;
@@ -66,7 +69,7 @@ public class AuthorizationWindowController {
 
     @FXML
     private void initialize(){
-        Users = new ArrayList<User>();
+        //Users = new ArrayList<User>();
 
         fUsersList = new File(".12oad032f78s");
 
@@ -84,7 +87,10 @@ public class AuthorizationWindowController {
                 //MassegeBox
                 stgAuthorization.close();
             }
-            Users.add(new User("admin","", false,false));
+         //   Users.add(new User("admin","", false,false));
+            userList = new UserList();
+            userList.add(new User("admin","",false,false));
+
 
         }
 
