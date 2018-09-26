@@ -31,7 +31,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="200.0" layoutY="184.0" textFill="#997777" />
+            <Label fx:id="lblMassege" layoutX="200.0" layoutY="184.0" textFill="#997777" />
          </children>
       </AnchorPane>
       <Label layoutX="30.0" layoutY="30.0" prefHeight="50.0" prefWidth="270.0" text="Lab Work" textFill="#fcf8f8">

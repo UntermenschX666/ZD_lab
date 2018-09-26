@@ -6,10 +6,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import objects.User;
 import objects.UserList;
 import java.io.File;
 import java.io.IOException;
@@ -22,6 +24,9 @@ public class AuthorizationWindowController {
     public static Stage stgAuthorization;
 
     @FXML
+    private Label lblMassege;
+
+    @FXML
     private TextField tfLogin;
 
     @FXML
@@ -32,23 +37,44 @@ public class AuthorizationWindowController {
 
     @FXML
     void handleBtnSignIn(ActionEvent event) throws Exception {
-        if (tfLogin.getText().equals("admin")) {
+
+        User user = userList.getUser(tfLogin.getText());
+        String strUserName = tfLogin.getText();
+        String strPassword = tfPassword.getText();
+        String strAdminName = "admin";
+
+        //System.out.println(strUserName);
+        //System.out.println(strPassword);
+        //System.out.println(user.getUserName());
+        //System.out.println(user.getPassword());
+
+        if(user == null){
+            lblMassege.setText("User with this name is not registered");
+            return;
+        }
+
+        if (!user.getPassword().equals(strPassword)){
+            lblMassege.setText("Wrong password");
+            return;
+        }
+
+        if(user.getUserName().equals(strAdminName)){
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/gui/AdminWindow.fxml"));
             Parent root =  (Parent) fxmlLoader.load();
-            AdminWindowController controller = fxmlLoader.getController();
             stgAdmin = new Stage();
             stgAdmin.setTitle("Admin");
             stgAdmin.getIcons().add(new Image("/images/icon/icnMainWindow.png"));
             stgAdmin.setScene(new Scene(root));
             stgAuthorization.hide();
             stgAdmin.show();
+            return;
         }
 
-        if(tfLogin.getText().equals("user")) {
+        if(user.getUserName().equals(strUserName)) {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/gui/UserWindow.fxml"));
-            Parent root =  (Parent) fxmlLoader.load();
+            Parent root = (Parent) fxmlLoader.load();
             UserWindowController controller = fxmlLoader.getController();
             stgUser = new Stage();
             stgUser.setTitle("User");
@@ -56,7 +82,9 @@ public class AuthorizationWindowController {
             stgUser.setScene(new Scene(root));
             stgAuthorization.hide();
             stgUser.show();
+            return;
         }
+
 
     }
 
@@ -82,7 +110,6 @@ public class AuthorizationWindowController {
                 //MassegeBox
                 stgAuthorization.close();
             }
-
 
         }
 
