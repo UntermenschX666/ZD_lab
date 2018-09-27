@@ -1,13 +1,11 @@
 .root{
-    -fx-background-color: #262626;
+    -fx-background-color: white;
 }
 
 .table-view{
     -fx-background-color:  #ffffff;
     -fx-border-color:  #778899;
 }
-
-
 
 .table-view .column-header-background{
     -fx-background-color:  #778899;
@@ -20,6 +18,16 @@
 
 .table-view .column-header {
     -fx-background-color: transparent;
+}
+
+.table-view: focused .table-row-cell:selected .table-cell{
+    -fx-text-fill: white;
+}
+
+.table-view: focused .table-row-cell:selected {
+    -fx-background-color: #778899;
+    /*-fx-text-background-color:  white;*/
+    -fx-table-cell-border-color: #778899;
 }
 
 .table-view .table-cell{

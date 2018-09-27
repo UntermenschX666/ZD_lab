@@ -1,9 +1,7 @@
 package controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import objects.User;
 
@@ -26,16 +24,14 @@ public class AdminWindowController {
     private TableColumn<User, Boolean> tbcRestrictions;
 
     @FXML
-    private Button btnAddUser;
+    private MenuBar mbMenu;
 
     @FXML
-    private Button btnRemoveUser;
+    private MenuItem miAdd;
 
     @FXML
-    private Button btnEditUser;
+    private MenuItem miRemove;
 
-    @FXML
-    private Button btnEditPass;
 
     @FXML
     private Button btnSaveChanges;
@@ -52,6 +48,7 @@ public class AdminWindowController {
         tbcRestrictions.setCellValueFactory(new PropertyValueFactory<User,Boolean>("sbpRestriction"));
         tbvUserList.setItems(AuthorizationWindowController.userList.getUsers());
 
+        tbvUserList.setEditable(true);
     }
 
 
