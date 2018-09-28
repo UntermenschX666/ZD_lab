@@ -11,14 +11,13 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import objects.User;
-import objects.UserList;
+import objects.ArrayUsers;
 import java.io.File;
 import java.io.IOException;
-
+import interfaces.User;
 public class AuthorizationWindowController {
 
-    public static UserList userList;
+    public static ArrayUsers arrayUsers;
     public static Stage stgAdmin;
     public static Stage stgUser;
     public static Stage stgAuthorization;
@@ -38,18 +37,14 @@ public class AuthorizationWindowController {
     @FXML
     void handleBtnSignIn(ActionEvent event) throws Exception {
 
-        User user = userList.getUser(tfLogin.getText());
+        User user = arrayUsers.getUser(tfLogin.getText());
         String strUserName = tfLogin.getText();
         String strPassword = tfPassword.getText();
         String strAdminName = "admin";
 
-        //System.out.println(strUserName);
-        //System.out.println(strPassword);
-        //System.out.println(user.getUserName());
-        //System.out.println(user.getPassword());
 
         if(user == null){
-            lblMassege.setText("User with this name is not registered");
+            lblMassege.setText("UserForSerialize with this name is not registered");
             return;
         }
 
@@ -93,8 +88,8 @@ public class AuthorizationWindowController {
 
         File fUsersList = new File(".12oad032f78s");
 
-        userList = new UserList();
-        userList.test();
+        arrayUsers = new ArrayUsers();
+        arrayUsers.test();
 
         if (!fUsersList.exists()){
             try {
@@ -115,10 +110,5 @@ public class AuthorizationWindowController {
 
 
     }
-
-    public void setStage(Stage stage){
-        stgAuthorization = stage;
-    }
-
 
 }

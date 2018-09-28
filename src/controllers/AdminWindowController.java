@@ -1,11 +1,16 @@
 package controllers;
 
+import interfaces.User;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import objects.User;
-
+import objects.UserForTable;
 public class AdminWindowController {
+
+    private ObservableList<User> usersTable;
 
     @FXML
     private TableView tbvUserList;
@@ -40,16 +45,45 @@ public class AdminWindowController {
     private Button btnEndSession;
 
     @FXML
-    private void initialize(){
-        //test data
-        tbcUsername.setCellValueFactory(new PropertyValueFactory<User,String>("sstrpUserName"));
-        tbcPassword.setCellValueFactory(new PropertyValueFactory<User,String>("sstrpPassword"));
-        tbcBlocked.setCellValueFactory(new PropertyValueFactory<User,Boolean>("sbpBlock"));
-        tbcRestrictions.setCellValueFactory(new PropertyValueFactory<User,Boolean>("sbpRestriction"));
-        tbvUserList.setItems(AuthorizationWindowController.userList.getUsers());
-
-        tbvUserList.setEditable(true);
+    void handleBtnEndSession(ActionEvent event) {
+        AuthorizationWindowController.stgAuthorization.show();
+        AuthorizationWindowController.stgAdmin.close();
     }
 
+    @FXML
+    void handleBtnSaveChanges(ActionEvent event) {
+
+    }
+
+    @FXML
+    private void initialize(){
+
+        OutToTableView();
+
+    }
+
+    private void OutToTableView(){
+
+        usersTable = FXCollections.observableArrayList(AuthorizationWindowController.arrayUsers.getUsersForTable());
+
+        tbcUsername.setCellValueFactory(
+                new PropertyValueFactory<User,String>("sspUserName")
+        );
+
+        tbcPassword.setCellValueFactory(
+                new PropertyValueFactory<User,String>("sspPassword")
+        );
+
+        tbcBlocked.setCellValueFactory(
+                new PropertyValueFactory<User,Boolean>("sbpBlock")
+        );
+
+        tbcRestrictions.setCellValueFactory(
+                new PropertyValueFactory<User,Boolean>("sbpRestriction")
+        );
+
+        tbvUserList.setItems(usersTable);
+
+    }
 
 }
