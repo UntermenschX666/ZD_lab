@@ -11,11 +11,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="435.0" maxWidth="700.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="435.0" prefWidth="700.0" style="-fx-background-color: #778899;" xmlns="http://javafx.com/javafx/8.0.162-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminWindowController">
+<AnchorPane maxHeight="450.0" maxWidth="440.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="440.0" style="-fx-background-color: #778899;" xmlns="http://javafx.com/javafx/8.0.162-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminWindowController">
     <children>
-        <AnchorPane layoutY="99.0" maxHeight="335.0" maxWidth="700.0" prefHeight="335.0" prefWidth="700.0" style="-fx-background-color: #ffffff;">
+        <AnchorPane layoutY="100.0" maxHeight="353.0" maxWidth="700.0" prefHeight="353.0" prefWidth="440.0" style="-fx-background-color: #ffffff;">
          <children>
-            <TableView fx:id="tbvUserList" fixedCellSize="0.0" layoutX="13.0" layoutY="38.0" opacity="0.7" prefHeight="209.0" prefWidth="673.0" stylesheets="@TableView.css">
+            <TableView fx:id="tbvUserList" fixedCellSize="0.0" layoutX="13.0" layoutY="38.0" opacity="0.7" prefHeight="229.0" prefWidth="415.0" stylesheets="@TableView.css">
               <columns>
                 <TableColumn fx:id="tbcUsername" prefWidth="97.0" text="Username" />
                 <TableColumn fx:id="tbcPassword" prefWidth="144.0" text="Password" />
@@ -34,12 +34,12 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="btnSaveChanges" layoutX="14.0" layoutY="260.0" mnemonicParsing="false" onAction="#handleBtnSaveChanges" prefHeight="33.0" prefWidth="158.0" style="-fx-background-color: #778899;" text="Save changes" textFill="WHITE">
+            <Button fx:id="btnSaveChanges" layoutX="14.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleBtnSaveChanges" prefHeight="33.0" prefWidth="200.0" style="-fx-background-color: #778899;" text="Save changes" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btnEndSession" layoutX="545.0" layoutY="260.0" mnemonicParsing="false" onAction="#handleBtnEndSession" prefHeight="33.0" prefWidth="141.0" style="-fx-background-color: #778899;" text="End session" textFill="WHITE">
+            <Button fx:id="btnEndSession" layoutX="228.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleBtnEndSession" prefHeight="33.0" prefWidth="200.0" style="-fx-background-color: #778899;" text="End session" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
@@ -56,17 +56,12 @@
             <Font size="34.0" />
          </font>
       </Label>
-      <Label layoutX="467.0" layoutY="30.0" prefHeight="50.0" prefWidth="219.0" text="Current session: Admin" textFill="WHITE">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
       <MenuBar fx:id="mbMenu" layoutX="-7.0" prefHeight="29.0" prefWidth="117.0" stylesheets="@MenuBar.css">
         <menus>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
-              <MenuItem fx:id="miAdd" mnemonicParsing="false" text="Add" />
-                  <MenuItem fx:id="miRemove" mnemonicParsing="false" text="Remove" />
+              <MenuItem fx:id="miAdd" mnemonicParsing="false" onAction="#handleMiAdd" text="Add" />
+                  <MenuItem fx:id="miRemove" mnemonicParsing="false" onAction="#handleMiRemove" text="Remove" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="435.0" maxWidth="700.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="290.0" prefWidth="440.0" style="-fx-background-color: #778899;" xmlns="http://javafx.com/javafx/8.0.162-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RemoveUserWindowController">
+   <children>
+      <AnchorPane layoutY="90.0" maxHeight="341.0" maxWidth="700.0" prefHeight="200.0" prefWidth="440.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <Button fx:id="btnClose" layoutX="265.0" layoutY="138.0" mnemonicParsing="false" onAction="#handleBtnClose" prefHeight="33.0" prefWidth="105.0" style="-fx-background-color: #778899;" text="Close" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnRemove" layoutX="70.0" layoutY="138.0" mnemonicParsing="false" onAction="#handleBtnRemove" prefHeight="33.0" prefWidth="105.0" style="-fx-background-color: #778899;" text="Remove" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <ChoiceBox fx:id="chcUserList" layoutX="72.0" layoutY="35.0" prefHeight="33.0" prefWidth="296.0" style="-fx-background-color: white; -fx-border-color: #778899; -fx-border-radius: 5;" />
+         </children>
+      </AnchorPane>
+      <Label layoutX="14.0" layoutY="30.0" prefHeight="50.0" prefWidth="183.0" text="Lab Work" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="34.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

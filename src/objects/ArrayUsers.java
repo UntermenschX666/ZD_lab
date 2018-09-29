@@ -2,8 +2,6 @@ package objects;
 
 import interfaces.User;
 import java.util.ArrayList;
-import objects.UserForTable;
-import objects.UserForSerialize;
 
 public class ArrayUsers {
 

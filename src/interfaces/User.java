@@ -10,4 +10,8 @@ public interface User {
 
  boolean isRestriction();
 
+ void setBlock(boolean bBlock);
+
+ void setRestriction(boolean bRestriction);
+
 }

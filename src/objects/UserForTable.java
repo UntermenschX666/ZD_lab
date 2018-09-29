@@ -78,4 +78,15 @@ public class UserForTable implements User {
 
     }
 
+    public void setBlock(boolean bBlock){
+
+        sbpBlock.set(bBlock);
+
+    }
+
+    public void setRestriction(boolean bRestriction){
+
+        sbpRestriction.set(bRestriction);
+
+    }
 }

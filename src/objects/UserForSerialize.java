@@ -1,7 +1,6 @@
 package objects;
 
 import interfaces.User;
-
 import java.io.Serializable;
 
 public class UserForSerialize implements User, Serializable {
@@ -31,19 +30,39 @@ public class UserForSerialize implements User, Serializable {
     }
 
     public String getUserName(){
+
         return  strUserName;
+
     }
 
     public String getPassword() {
+
         return strPassword;
+
     }
 
     public boolean isBlocked(){
+
         return bBlock;
+
     }
 
     public boolean isRestriction(){
+
         return  bRestriction;
+
+    }
+
+    public void setBlock(boolean bBlock) {
+
+        this.bBlock = bBlock;
+
+    }
+
+    public void setRestriction(boolean bRestriction){
+
+        this.bRestriction = bRestriction;
+
     }
 
 }

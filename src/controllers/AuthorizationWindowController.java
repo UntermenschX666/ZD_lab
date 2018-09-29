@@ -3,27 +3,27 @@ package controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import objects.ArrayUsers;
 import java.io.File;
 import java.io.IOException;
 import interfaces.User;
+import start.Main;
+
+import static start.Main.*;
+
+
 public class AuthorizationWindowController {
 
     public static ArrayUsers arrayUsers;
-    public static Stage stgAdmin;
-    public static Stage stgUser;
-    public static Stage stgAuthorization;
+    public static User curUser;
 
     @FXML
-    private Label lblMassege;
+    private Label lblMessege;
 
     @FXML
     private TextField tfLogin;
@@ -35,48 +35,63 @@ public class AuthorizationWindowController {
     private Button btnSignIn;
 
     @FXML
+    void handleMiAbout(ActionEvent event) throws Exception {
+
+        stgAbout = new Stage();
+
+        CreateWindow(stgAbout, strNameAboutWindow,
+                FXMLLoader.load(getClass().getResource(strPathFxmlAboutWindow)),
+                440,200);
+
+
+        stgAbout.show();
+
+    }
+
+    @FXML
     void handleBtnSignIn(ActionEvent event) throws Exception {
 
-        User user = arrayUsers.getUser(tfLogin.getText());
+        curUser = arrayUsers.getUser(tfLogin.getText());
         String strUserName = tfLogin.getText();
         String strPassword = tfPassword.getText();
-        String strAdminName = "admin";
 
 
-        if(user == null){
-            lblMassege.setText("UserForSerialize with this name is not registered");
+        if(curUser == null){
+            lblMessege.setText("User with this name is not registered");
             return;
         }
 
-        if (!user.getPassword().equals(strPassword)){
-            lblMassege.setText("Wrong password");
+        if (!curUser.getPassword().equals(strPassword)){
+            lblMessege.setText("Wrong password");
             return;
         }
 
-        if(user.getUserName().equals(strAdminName)){
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/gui/AdminWindow.fxml"));
-            Parent root =  (Parent) fxmlLoader.load();
+        if(curUser.getUserName().equals(strAdminName)){
+
             stgAdmin = new Stage();
-            stgAdmin.setTitle("Admin");
-            stgAdmin.getIcons().add(new Image("/images/icon/icnMainWindow.png"));
-            stgAdmin.setScene(new Scene(root));
+
+            CreateWindow(stgAdmin, strNameAdminWindow,
+                    FXMLLoader.load(getClass().getResource(Main.strPathFxmlAdminWindow)),
+                    440,450);
+
             stgAuthorization.hide();
             stgAdmin.show();
+
             return;
+
         }
 
-        if(user.getUserName().equals(strUserName)) {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/gui/UserWindow.fxml"));
-            Parent root = (Parent) fxmlLoader.load();
-            UserWindowController controller = fxmlLoader.getController();
+        if(curUser.getUserName().equals(strUserName)) {
+
             stgUser = new Stage();
-            stgUser.setTitle("User");
-            stgUser.getIcons().add(new Image("/images/icon/icnMainWindow.png"));
-            stgUser.setScene(new Scene(root));
+
+            CreateWindow(Main.stgUser,Main.strNameUserWindow,
+                    FXMLLoader.load(getClass().getResource(Main.strPathFxmlUserWindow)),
+                    440,450);
+
             stgAuthorization.hide();
             stgUser.show();
+
             return;
         }
 
