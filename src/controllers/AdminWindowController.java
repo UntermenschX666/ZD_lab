@@ -22,7 +22,7 @@ import start.Main;
 
 public class AdminWindowController {
 
-    private ObservableList<User> usersTable;
+    private static TableView tbvUserTable;
 
     @FXML
     private TableView tbvUserList;
@@ -75,8 +75,7 @@ public class AdminWindowController {
         stgAddUser = new Stage();
 
         CreateWindow(stgAddUser, strNameAddUserWindow,
-                FXMLLoader.load(getClass().getResource(strPathFxmlAddUserWindow)),
-        440,290);
+                FXMLLoader.load(getClass().getResource(strPathFxmlAddUserWindow)));
 
         stgAddUser.initModality(Modality.WINDOW_MODAL);
         stgAddUser.initOwner(stgAdmin);
@@ -91,8 +90,7 @@ public class AdminWindowController {
         stgRemoveUser = new Stage();
 
         CreateWindow(stgRemoveUser, strNameRemoveUserWindow,
-                FXMLLoader.load(getClass().getResource(strPathFxmlRemoveUserWindow)),
-        440,290);
+                FXMLLoader.load(getClass().getResource(strPathFxmlRemoveUserWindow)));
 
         stgRemoveUser.initModality(Modality.WINDOW_MODAL);
         stgRemoveUser.initOwner(stgAdmin);
@@ -108,9 +106,18 @@ public class AdminWindowController {
 
     }
 
+    public static void refreshTable(){
+
+        tbvUserTable.setItems(FXCollections.observableArrayList(
+                arrayUsers.getUsersForTable()
+        ));
+
+    }
+
     private void OutToTableView() {
 
-        usersTable = FXCollections.observableArrayList(AuthorizationWindowController.arrayUsers.getUsersForTable());
+        ObservableList<User> usersTable =
+                FXCollections.observableArrayList(arrayUsers.getUsersForTable());
 
         tbvUserList.setEditable(true);
 
@@ -127,6 +134,7 @@ public class AdminWindowController {
         CreateCheckBoxInTable(tbcRestrictions,false);
 
         tbvUserList.setItems(usersTable);
+        tbvUserTable = tbvUserList;
 
     }
 

@@ -1,5 +1,6 @@
 package start;
 
+import interfaces.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -7,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import controllers.AuthorizationWindowController;
+import objects.ArrayUsers;
 
 public class Main extends Application {
 
@@ -44,16 +46,20 @@ public class Main extends Application {
     public static final String strPathIcon = "/images/icon/icnMainWindow.png";
 
     public static final String strAdminName = "admin";
+    public static final String strStandartPassword = "";
+    public static final String strStandartUserName = "Username";
 
     public static final String strStyleCheckBoxInTable = "/gui/CheckBox.css";
 
-    public static void CreateWindow(Stage stgWindow, final String strWindowName, Parent root, int mWidth, int mHeight){
+
+    public static ArrayUsers arrayUsers;
+    public static User curUser;
+
+    public static void CreateWindow(Stage stgWindow, final String strWindowName, Parent root ){
 
         stgWindow.setTitle(strWindowName);
         stgWindow.getIcons().add(new Image(strPathIcon));
         stgWindow.setScene(new Scene(root));
-        stgWindow.setMinWidth(mWidth);
-        stgWindow.setMinHeight(mHeight);
         stgWindow.setResizable(false);
 
     }
@@ -68,8 +74,7 @@ public class Main extends Application {
         this.stgAuthorization = stgAuthorization;
 
         CreateWindow(stgAuthorization,strNameAuthorizationWindow,
-                FXMLLoader.load(getClass().getResource(strPathFxmlAuthorizationWindow)),
-                440,435 );
+                FXMLLoader.load(getClass().getResource(strPathFxmlAuthorizationWindow)));
 
         stgAuthorization.show();
     }

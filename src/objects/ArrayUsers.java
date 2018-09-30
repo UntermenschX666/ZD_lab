@@ -59,6 +59,13 @@ public class ArrayUsers {
 
     }
 
+    public ArrayList<User> getUsersForChoiceBox(){
+
+        convertToSerializeUsers();
+
+        return arrUsers;
+    }
+
     private void convertToTableUsers(){
 
         for (int i = 0; i < arrUsers.size(); i++) {

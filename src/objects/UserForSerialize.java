@@ -65,4 +65,10 @@ public class UserForSerialize implements User, Serializable {
 
     }
 
+    public String toString(){
+
+        return strUserName;
+
+    }
+
 }

@@ -7,31 +7,31 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="435.0" maxWidth="700.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="290.0" prefWidth="440.0" style="-fx-background-color: #778899;" xmlns="http://javafx.com/javafx/8.0.162-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddUserWindowController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="180.0" prefWidth="790.0" style="-fx-background-color: #778899;" xmlns="http://javafx.com/javafx/8.0.162-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddUserWindowController">
     <children>
-        <AnchorPane layoutY="90.0" maxHeight="341.0" maxWidth="700.0" prefHeight="200.0" prefWidth="440.0" style="-fx-background-color: #ffffff;">
+        <AnchorPane layoutY="90.0" maxHeight="341.0" maxWidth="872.0" prefHeight="94.0" prefWidth="790.0" style="-fx-background-color: #ffffff;">
             <children>
-                <Button fx:id="btnClose" layoutX="290.0" layoutY="138.0" mnemonicParsing="false" onAction="#handleBtnClose" prefHeight="33.0" prefWidth="80.0" style="-fx-background-color: #778899;" text="Close" textFill="WHITE">
+                <Button fx:id="btnClose" layoutX="682.0" layoutY="25.0" mnemonicParsing="false" onAction="#handleBtnClose" prefHeight="33.0" prefWidth="84.0" style="-fx-background-color: #778899;" text="Close" textFill="WHITE">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Button>
-            <TextField fx:id="tfUsername" layoutX="70.0" layoutY="44.0" prefHeight="35.0" prefWidth="300.0" promptText="Username" style="-fx-background-color: #ffffff; -fx-border-color: #778899; -fx-border-radius: 5;" stylesheets="@TextField.css">
+            <TextField fx:id="tfUserName" layoutX="25.0" layoutY="24.0" prefHeight="35.0" prefWidth="300.0" promptText="Username" style="-fx-background-color: #ffffff; -fx-border-color: #778899; -fx-border-radius: 5;" stylesheets="@TextField.css">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
-            <CheckBox fx:id="chbBlock" layoutX="75.0" layoutY="94.0" mnemonicParsing="false" stylesheets="@CheckBox.css" text="Block" textFill="LIGHTSLATEGRAY">
+            <CheckBox fx:id="chbBlock" layoutX="336.0" layoutY="28.0" mnemonicParsing="false" stylesheets="@CheckBox.css" text="Block" textFill="LIGHTSLATEGRAY">
                <font>
                   <Font size="18.0" />
                </font>
             </CheckBox>
-            <CheckBox fx:id="chbRestriction" layoutX="240.0" layoutY="94.0" mnemonicParsing="false" stylesheets="@CheckBox.css" text="Restriction " textFill="LIGHTSLATEGRAY">
+            <CheckBox fx:id="chbRestriction" layoutX="435.0" layoutY="28.0" mnemonicParsing="false" stylesheets="@CheckBox.css" text="Restriction " textFill="LIGHTSLATEGRAY">
                <font>
                   <Font size="18.0" />
                </font>
             </CheckBox>
-            <Button fx:id="btnAdd" layoutX="70.0" layoutY="138.0" mnemonicParsing="false" onAction="#handleBtnAdd" prefHeight="33.0" prefWidth="80.0" style="-fx-background-color: #778899;" text="Add" textFill="WHITE">
+            <Button fx:id="btnAdd" layoutX="573.0" layoutY="25.0" mnemonicParsing="false" onAction="#handleBtnAdd" prefHeight="33.0" prefWidth="84.0" style="-fx-background-color: #778899;" text="Add" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>

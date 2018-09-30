@@ -5,8 +5,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
+import objects.UserForTable;
 
-import static start.Main.stgAddUser;
+import static start.Main.*;
 
 public class AddUserWindowController {
 
@@ -14,7 +15,7 @@ public class AddUserWindowController {
     private Button btnClose;
 
     @FXML
-    private TextField tfUsername;
+    private TextField tfUserName;
 
     @FXML
     private CheckBox chbBlock;
@@ -28,6 +29,18 @@ public class AddUserWindowController {
     @FXML
     void handleBtnAdd(ActionEvent event) {
 
+        String strUserName = tfUserName.getText();
+        String strPassword = strStandartPassword;
+        boolean bBlock = chbBlock.isSelected();
+        boolean bRestriction = chbRestriction.isSelected();
+
+        arrayUsers.add(new UserForTable(strUserName, strPassword, bBlock, bRestriction));
+
+        tfUserName.setText("");
+        chbBlock.setSelected(false);
+        chbRestriction.setSelected(false);
+
+        AdminWindowController.refreshTable();
     }
 
     @FXML

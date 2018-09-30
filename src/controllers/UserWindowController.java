@@ -6,6 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import start.Main;
 
+import static start.Main.curUser;
+
 public class UserWindowController {
 
     @FXML
@@ -28,9 +30,9 @@ public class UserWindowController {
     @FXML
     private void initialize(){
 
-        lblUserName.setText(AuthorizationWindowController.curUser.getUserName());
+        lblUserName.setText(curUser.getUserName());
 
-        if(AuthorizationWindowController.curUser.isRestriction())
+        if(curUser.isRestriction())
             lblRestriction.setText("Yes");
         else
             lblRestriction.setText("No");

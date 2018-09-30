@@ -11,16 +11,12 @@ import javafx.stage.Stage;
 import objects.ArrayUsers;
 import java.io.File;
 import java.io.IOException;
-import interfaces.User;
 import start.Main;
 
 import static start.Main.*;
 
 
 public class AuthorizationWindowController {
-
-    public static ArrayUsers arrayUsers;
-    public static User curUser;
 
     @FXML
     private Label lblMessege;
@@ -40,8 +36,7 @@ public class AuthorizationWindowController {
         stgAbout = new Stage();
 
         CreateWindow(stgAbout, strNameAboutWindow,
-                FXMLLoader.load(getClass().getResource(strPathFxmlAboutWindow)),
-                440,200);
+                FXMLLoader.load(getClass().getResource(strPathFxmlAboutWindow)));
 
 
         stgAbout.show();
@@ -71,8 +66,7 @@ public class AuthorizationWindowController {
             stgAdmin = new Stage();
 
             CreateWindow(stgAdmin, strNameAdminWindow,
-                    FXMLLoader.load(getClass().getResource(Main.strPathFxmlAdminWindow)),
-                    440,450);
+                    FXMLLoader.load(getClass().getResource(Main.strPathFxmlAdminWindow)));
 
             stgAuthorization.hide();
             stgAdmin.show();
@@ -86,8 +80,7 @@ public class AuthorizationWindowController {
             stgUser = new Stage();
 
             CreateWindow(Main.stgUser,Main.strNameUserWindow,
-                    FXMLLoader.load(getClass().getResource(Main.strPathFxmlUserWindow)),
-                    440,450);
+                    FXMLLoader.load(getClass().getResource(Main.strPathFxmlUserWindow)));
 
             stgAuthorization.hide();
             stgUser.show();
