@@ -31,11 +31,11 @@ public class AuthorizationWindowController {
     private Button btnSignIn;
 
     @FXML
-    void handleMiAbout(ActionEvent event) throws Exception {
+    private void handleMiAbout(ActionEvent event) throws Exception {
 
         stgAbout = new Stage();
 
-        CreateWindow(stgAbout, strNameAboutWindow,
+        createWindow(stgAbout, strNameAboutWindow,
                 FXMLLoader.load(getClass().getResource(strPathFxmlAboutWindow)));
 
 
@@ -44,20 +44,25 @@ public class AuthorizationWindowController {
     }
 
     @FXML
-    void handleBtnSignIn(ActionEvent event) throws Exception {
+    private void handleBtnSignIn(ActionEvent event) throws Exception {
 
-        curUser = arrayUsers.getUser(tfLogin.getText());
         String strUserName = tfLogin.getText();
         String strPassword = tfPassword.getText();
 
 
+        curUser = arrayUsers.getUser(strUserName);
+
         if(curUser == null){
+
             lblMessege.setText("User with this name is not registered");
+
             return;
         }
 
         if (!curUser.getPassword().equals(strPassword)){
+
             lblMessege.setText("Wrong password");
+
             return;
         }
 
@@ -65,8 +70,11 @@ public class AuthorizationWindowController {
 
             stgAdmin = new Stage();
 
-            CreateWindow(stgAdmin, strNameAdminWindow,
+            createWindow(stgAdmin, strNameAdminWindow,
                     FXMLLoader.load(getClass().getResource(Main.strPathFxmlAdminWindow)));
+
+
+            refreshErrMessege();
 
             stgAuthorization.hide();
             stgAdmin.show();
@@ -79,8 +87,10 @@ public class AuthorizationWindowController {
 
             stgUser = new Stage();
 
-            CreateWindow(Main.stgUser,Main.strNameUserWindow,
+            createWindow(Main.stgUser,Main.strNameUserWindow,
                     FXMLLoader.load(getClass().getResource(Main.strPathFxmlUserWindow)));
+
+            refreshErrMessege();
 
             stgAuthorization.hide();
             stgUser.show();
@@ -116,6 +126,12 @@ public class AuthorizationWindowController {
 
         }
 
+
+    }
+
+    private void refreshErrMessege(){
+
+        lblMessege.setText("");
 
     }
 

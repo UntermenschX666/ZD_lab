@@ -89,4 +89,5 @@ public class UserForTable implements User {
         sbpRestriction.set(bRestriction);
 
     }
+
 }

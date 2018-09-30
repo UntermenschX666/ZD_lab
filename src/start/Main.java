@@ -7,7 +7,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import controllers.AuthorizationWindowController;
 import objects.ArrayUsers;
 
 public class Main extends Application {
@@ -55,7 +54,7 @@ public class Main extends Application {
     public static ArrayUsers arrayUsers;
     public static User curUser;
 
-    public static void CreateWindow(Stage stgWindow, final String strWindowName, Parent root ){
+    public static void createWindow(Stage stgWindow, final String strWindowName, Parent root ){
 
         stgWindow.setTitle(strWindowName);
         stgWindow.getIcons().add(new Image(strPathIcon));
@@ -73,7 +72,7 @@ public class Main extends Application {
 
         this.stgAuthorization = stgAuthorization;
 
-        CreateWindow(stgAuthorization,strNameAuthorizationWindow,
+        createWindow(stgAuthorization,strNameAuthorizationWindow,
                 FXMLLoader.load(getClass().getResource(strPathFxmlAuthorizationWindow)));
 
         stgAuthorization.show();

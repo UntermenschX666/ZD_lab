@@ -13,6 +13,26 @@ public class ArrayUsers {
 
     }
 
+    public void remove(User user){
+
+        arrUsers.remove(user);
+
+    }
+
+    private void removeByName( String strUserName){
+
+        User user = getUser(strUserName);
+
+        if(user == null)
+            return;
+
+        if(!isUserOnList(strUserName))
+            return;
+
+        arrUsers.remove(user);
+
+    }
+
     public void add(User user){
 
         arrUsers.add(user);
@@ -42,6 +62,15 @@ public class ArrayUsers {
 
     }
 
+    public boolean isUserOnList(String strUserName){
+
+        User user = getUser(strUserName);
+
+        if (user == null)
+            return false;
+
+        return true;
+    }
 
     public ArrayList<User> getUsersForSerialize() {
 
@@ -61,14 +90,27 @@ public class ArrayUsers {
 
     public ArrayList<User> getUsersForChoiceBox(){
 
-        convertToSerializeUsers();
+        convertToChoiceBoxUsers();
 
         return arrUsers;
+
+    }
+
+
+    private void convertToChoiceBoxUsers(){
+
+        for (int i = 0; i < arrUsers.size(); i++) {
+
+            arrUsers.set(i,new UserForChoiceBox(arrUsers.get(i)));
+
+        }
+
     }
 
     private void convertToTableUsers(){
 
         for (int i = 0; i < arrUsers.size(); i++) {
+
             arrUsers.set(i,new UserForTable(arrUsers.get(i)));
 
         }
@@ -78,6 +120,7 @@ public class ArrayUsers {
     private void convertToSerializeUsers(){
 
         for (int i = 0; i < arrUsers.size(); i++) {
+
             arrUsers.set(i,new UserForSerialize(arrUsers.get(i)));
 
         }

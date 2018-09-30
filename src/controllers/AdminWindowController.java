@@ -18,7 +18,6 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 
 import static start.Main.*;
-import start.Main;
 
 public class AdminWindowController {
 
@@ -74,7 +73,7 @@ public class AdminWindowController {
 
         stgAddUser = new Stage();
 
-        CreateWindow(stgAddUser, strNameAddUserWindow,
+        createWindow(stgAddUser, strNameAddUserWindow,
                 FXMLLoader.load(getClass().getResource(strPathFxmlAddUserWindow)));
 
         stgAddUser.initModality(Modality.WINDOW_MODAL);
@@ -89,7 +88,7 @@ public class AdminWindowController {
 
         stgRemoveUser = new Stage();
 
-        CreateWindow(stgRemoveUser, strNameRemoveUserWindow,
+        createWindow(stgRemoveUser, strNameRemoveUserWindow,
                 FXMLLoader.load(getClass().getResource(strPathFxmlRemoveUserWindow)));
 
         stgRemoveUser.initModality(Modality.WINDOW_MODAL);
@@ -102,7 +101,7 @@ public class AdminWindowController {
     @FXML
     private void initialize(){
 
-        OutToTableView();
+        outToTableView();
 
     }
 
@@ -114,7 +113,7 @@ public class AdminWindowController {
 
     }
 
-    private void OutToTableView() {
+    private void outToTableView() {
 
         ObservableList<User> usersTable =
                 FXCollections.observableArrayList(arrayUsers.getUsersForTable());
@@ -129,16 +128,16 @@ public class AdminWindowController {
                 new PropertyValueFactory<User,String>("sspPassword")
         );
 
-        CreateCheckBoxInTable(tbcBlocked,true);
+        createCheckBoxInTable(tbcBlocked,true);
 
-        CreateCheckBoxInTable(tbcRestrictions,false);
+        createCheckBoxInTable(tbcRestrictions,false);
 
         tbvUserList.setItems(usersTable);
         tbvUserTable = tbvUserList;
 
     }
 
-    private void CreateCheckBoxInTable(TableColumn<User,Boolean> tbcValue, boolean bRestOrBlock){
+    private void createCheckBoxInTable(TableColumn<User,Boolean> tbcValue, boolean bRestOrBlock){
 
         tbcValue.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<User, Boolean>,
                 ObservableValue<Boolean>>() {

@@ -10,6 +10,7 @@ import javafx.scene.control.ChoiceBox;
 
 import java.awt.*;
 
+import static controllers.AdminWindowController.refreshTable;
 import static start.Main.arrayUsers;
 import static start.Main.stgRemoveUser;
 
@@ -27,15 +28,22 @@ public class RemoveUserWindowController {
     private ChoiceBox<User> chcUserList;
 
     @FXML
-    void handleBtnClose(ActionEvent event) {
+    private void handleBtnClose(ActionEvent event) {
 
         stgRemoveUser.close();
 
     }
 
     @FXML
-    void handleBtnRemove(ActionEvent event) {
+    private void handleBtnRemove(ActionEvent event) {
 
+        User user = chcUserList.getValue();
+
+        arrayUsers.remove(user);
+
+        //Sequence is important
+        refreshTable();
+        refreshChoiceBox();
 
     }
 
@@ -45,6 +53,16 @@ public class RemoveUserWindowController {
         usersChoice = FXCollections.observableArrayList(arrayUsers.getUsersForChoiceBox());
 
         chcUserList.setItems(usersChoice);
+
+
+    }
+
+    private void refreshChoiceBox(){
+
+        usersChoice = FXCollections.observableArrayList(arrayUsers.getUsersForChoiceBox());
+
+        chcUserList.setItems(usersChoice);
+
 
     }
 

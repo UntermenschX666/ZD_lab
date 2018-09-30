@@ -1,16 +1,15 @@
 package objects;
 
 import interfaces.User;
-import java.io.Serializable;
 
-public class UserForSerialize implements User, Serializable {
+public class UserForChoiceBox implements User {
 
     private String strUserName;
     private String strPassword;
     private boolean bBlock;
     private boolean bRestriction;
 
-    public UserForSerialize(String strUserName, String strPassword,
+    public UserForChoiceBox(String strUserName, String strPassword,
                             boolean bBlock, boolean bRestriction){
 
         this.strUserName = strUserName;
@@ -20,7 +19,7 @@ public class UserForSerialize implements User, Serializable {
 
     }
 
-    public  UserForSerialize(User user){
+    public  UserForChoiceBox(User user){
 
         strUserName = user.getUserName();
         strPassword = user.getPassword();
@@ -62,6 +61,12 @@ public class UserForSerialize implements User, Serializable {
     public void setRestriction(boolean bRestriction){
 
         this.bRestriction = bRestriction;
+
+    }
+
+    public String toString(){
+
+        return strUserName;
 
     }
 
