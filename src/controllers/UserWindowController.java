@@ -2,11 +2,14 @@ package controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import start.Main;
 
-import static start.Main.curUser;
+import static start.Main.*;
 
 public class UserWindowController {
 
@@ -20,15 +23,28 @@ public class UserWindowController {
     private Label lblRestriction;
 
     @FXML
-    void handleBtnEndSession(ActionEvent event) {
+    private void handleMiChangePassword(ActionEvent event) throws Exception{
 
-        Main.stgAuthorization.show();
-        Main.stgUser.close();
+        stgChangePassword = new Stage();
+
+        createWindow(stgChangePassword, strNameChangePassword,
+                FXMLLoader.load(getClass().getResource(strPathFxmlChangePasswordWindow)));
+
+        setModalWindow(stgChangePassword,stgUser);
+
+        stgChangePassword.show();
+    }
+
+    @FXML
+    private void handleBtnEndSession(ActionEvent event) {
+
+        stgAuthorization.show();
+        stgUser.close();
 
     }
 
     @FXML
-    private void initialize(){
+    private void initialize() throws Exception{
 
         lblUserName.setText(curUser.getUserName());
 
@@ -36,6 +52,7 @@ public class UserWindowController {
             lblRestriction.setText("Yes");
         else
             lblRestriction.setText("No");
+
 
     }
 

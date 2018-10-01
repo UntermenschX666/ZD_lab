@@ -6,6 +6,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 
+import static controllers.AdminWindowController.refreshTable;
+import static start.Main.arrayUsers;
+import static start.Main.curUser;
+import static start.Main.stgChangePassword;
+
 public class ChangePasswordWindowController {
 
     @FXML
@@ -27,12 +32,39 @@ public class ChangePasswordWindowController {
     private Button btnClose;
 
     @FXML
-    void handleBtnChange(ActionEvent event) {
+    private void handleBtnChange(ActionEvent event) {
+
+        String strOldPassword = tfOldPassword.getText();
+        String strNewPassword = tfNewPassword.getText();
+        String strConfirmPassword = tfConfirmPassword.getText();
+
+        if(!strOldPassword.equals(curUser.getPassword())){
+
+            lblMessege.setText("Wrong old password");
+
+            return;
+        }
+
+        if(!strNewPassword.equals(strConfirmPassword)){
+
+            lblMessege.setText("Passwords do not match");
+
+            return;
+        }
+
+        curUser.setPassword(strNewPassword);
+        arrayUsers.replaceUser(curUser);
+
+        refreshTable();
+
+        stgChangePassword.close();
 
     }
 
     @FXML
-    void handleBtnClose(ActionEvent event) {
+    private void handleBtnClose(ActionEvent event) {
+
+        stgChangePassword.close();
 
     }
 

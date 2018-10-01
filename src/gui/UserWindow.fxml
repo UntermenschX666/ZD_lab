@@ -48,7 +48,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="Settings">
             <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
+              <MenuItem fx:id="miChangePassword" mnemonicParsing="false" onAction="#handleMiChangePassword" text="Change password" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">

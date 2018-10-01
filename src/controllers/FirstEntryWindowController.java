@@ -6,6 +6,11 @@ package controllers;
         import javafx.scene.control.Label;
         import javafx.scene.control.PasswordField;
 
+        import static controllers.AdminWindowController.refreshTable;
+        import static start.Main.arrayUsers;
+        import static start.Main.curUser;
+        import static start.Main.stgFirstEntry;
+
 public class FirstEntryWindowController {
 
     @FXML
@@ -21,7 +26,22 @@ public class FirstEntryWindowController {
     private Button btnNext;
 
     @FXML
-    void handleBtnNext(ActionEvent event) {
+    private void handleBtnNext(ActionEvent event) {
+
+        String strNewPassword = tfNewPassword.getText();
+        String strConfirmPassword = tfConfirmPassword.getText();
+
+        if(!strNewPassword.equals(strConfirmPassword)){
+
+            lblMessege.setText("Passwords do not match");
+
+            return;
+        }
+
+        curUser.setPassword(strNewPassword);
+        arrayUsers.replaceUser(curUser);
+
+        stgFirstEntry.close();
 
     }
 

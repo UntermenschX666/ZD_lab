@@ -14,4 +14,6 @@ public interface User {
 
  void setRestriction(boolean bRestriction);
 
+ void setPassword(String strPassword);
+
 }

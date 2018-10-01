@@ -64,6 +64,11 @@ public class UserForChoiceBox implements User {
 
     }
 
+    public void setPassword(String strPassword){
+
+        this.strPassword = strPassword;
+    }
+
     public String toString(){
 
         return strUserName;

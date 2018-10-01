@@ -6,8 +6,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import objects.ArrayUsers;
+import objects.UserForSerialize;
+import sun.rmi.server.UnicastServerRef;
+
+import java.io.File;
+import java.io.IOException;
 
 public class Main extends Application {
 
@@ -20,6 +26,9 @@ public class Main extends Application {
     public static Stage stgSaveChanges;
     public static Stage stgFirstEntry;
     public static Stage stgMessege;
+    public static Stage stgChangePassword;
+
+    public static File fUsersFile;
 
     public static final String strPathFxmlAuthorizationWindow = "/gui/AuthorizationWindow.fxml";
     public static final String strPathFxmlUserWindow = "/gui/UserWindow.fxml" ;
@@ -30,6 +39,7 @@ public class Main extends Application {
     public static final String strPathFxmlSaveChangesWindow = "/gui/SaveChangesWindow.fxml";
     public static final String strPathFxmlFirstEntryWindow = "/gui/FirstEntryWindow.fxml";
     public static final String strPathFxmlMessegeWindow = "/gui/MessegeWindow.fxml";
+    public static final String strPathFxmlChangePasswordWindow = "/gui/ChangePasswordWindow.fxml";
 
 
     public static final String strNameAuthorizationWindow = "Authorization";
@@ -41,8 +51,11 @@ public class Main extends Application {
     public static final String strNameSaveChengesWindow = "Save Changes";
     public static final String strNameFirstEntryWindow = "First Entry";
     public static final String strNameMessegeWindow = "Messege";
+    public static final String strNameChangePassword = "Change Password";
 
     public static final String strPathIcon = "/images/icon/icnMainWindow.png";
+
+    public static final String strFileName = ".users";
 
     public static final String strAdminName = "admin";
     public static final String strStandartPassword = "";
@@ -63,6 +76,29 @@ public class Main extends Application {
 
     }
 
+    public static void setModalWindow(Stage stgModalWindow, Stage stgOwner){
+
+        stgModalWindow.initModality(Modality.WINDOW_MODAL);
+        stgModalWindow.initOwner(stgOwner);
+
+    }
+
+    private File preparationFile(){
+
+        File file = new File(strFileName);
+
+        if(file.exists()){
+            try{
+                file.createNewFile();
+            }catch (IOException ex){
+                return null;
+            }
+        }
+
+        return file;
+
+    }
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -70,12 +106,28 @@ public class Main extends Application {
     @Override
     public void start(Stage stgAuthorization) throws Exception{
 
+        /*fUsersFile = preparationFile();
+
+        if(fUsersFile == null){
+
+            //MessegeBox
+
+            return;
+        }*/
+
+        User adminUser = new UserForSerialize(strAdminName,strStandartPassword,
+                false, true);
+
+
+        arrayUsers = new ArrayUsers(adminUser);
+
         this.stgAuthorization = stgAuthorization;
 
         createWindow(stgAuthorization,strNameAuthorizationWindow,
                 FXMLLoader.load(getClass().getResource(strPathFxmlAuthorizationWindow)));
 
         stgAuthorization.show();
+
     }
 
 }

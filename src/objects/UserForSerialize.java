@@ -65,4 +65,10 @@ public class UserForSerialize implements User, Serializable {
 
     }
 
+    public void setPassword(String strPassword) {
+
+        this.strPassword = strPassword;
+
+    }
+
 }

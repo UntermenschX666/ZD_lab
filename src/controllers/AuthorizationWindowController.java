@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import objects.ArrayUsers;
 import java.io.File;
@@ -68,15 +69,21 @@ public class AuthorizationWindowController {
 
         if(curUser.getUserName().equals(strAdminName)){
 
+            stgAuthorization.hide();
+            refreshAuthorizationWindow();
+
+            if(curUser.getPassword().equals(strStandartPassword)){
+
+                FirstEntry(stgAdmin);
+                stgFirstEntry.showAndWait();
+
+            }
+
             stgAdmin = new Stage();
 
             createWindow(stgAdmin, strNameAdminWindow,
-                    FXMLLoader.load(getClass().getResource(Main.strPathFxmlAdminWindow)));
+                    FXMLLoader.load(getClass().getResource(strPathFxmlAdminWindow)));
 
-
-            refreshErrMessege();
-
-            stgAuthorization.hide();
             stgAdmin.show();
 
             return;
@@ -85,14 +92,21 @@ public class AuthorizationWindowController {
 
         if(curUser.getUserName().equals(strUserName)) {
 
+            stgAuthorization.hide();
+            refreshAuthorizationWindow();
+
+            if(curUser.getPassword().equals(strStandartPassword)){
+
+                FirstEntry(stgAdmin);
+                stgFirstEntry.showAndWait();
+
+            }
+
             stgUser = new Stage();
 
             createWindow(Main.stgUser,Main.strNameUserWindow,
                     FXMLLoader.load(getClass().getResource(Main.strPathFxmlUserWindow)));
 
-            refreshErrMessege();
-
-            stgAuthorization.hide();
             stgUser.show();
 
             return;
@@ -104,12 +118,10 @@ public class AuthorizationWindowController {
     @FXML
     private void initialize(){
 
-        File fUsersList = new File(".12oad032f78s");
 
-        arrayUsers = new ArrayUsers();
-        arrayUsers.test();
-
-        if (!fUsersList.exists()){
+        //arrayUsers.test();
+        /*
+        if (fUsersList.exists()){
             try {
 
                 if (!fUsersList.createNewFile()) {
@@ -124,14 +136,25 @@ public class AuthorizationWindowController {
                 stgAuthorization.close();
             }
 
-        }
+        }*/
 
 
     }
 
-    private void refreshErrMessege(){
+    private void FirstEntry(Stage stgAdminOrUser) throws Exception{
+
+        stgFirstEntry = new Stage();
+
+        createWindow(stgFirstEntry,strNameFirstEntryWindow,
+                FXMLLoader.load(getClass().getResource(strPathFxmlFirstEntryWindow)));
+
+    }
+
+    private void refreshAuthorizationWindow(){
 
         lblMessege.setText("");
+        tfLogin.setText("");
+        tfPassword.setText("");
 
     }
 

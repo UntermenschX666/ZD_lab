@@ -38,10 +38,12 @@ public class AddUserWindowController {
         String strPassword = strStandartPassword;
         boolean bBlock = chbBlock.isSelected();
         boolean bRestriction = chbRestriction.isSelected();
+        int intSize = arrayUsers.getSize();
 
-        if(!arrayUsers.isUserOnList(strUserName)) {
+        arrayUsers.add(new UserForTable(strUserName, strPassword, bBlock, bRestriction));
 
-            arrayUsers.add(new UserForTable(strUserName, strPassword, bBlock, bRestriction));
+        if(intSize != arrayUsers.getSize()) {
+
             refreshAddWindow();
             refreshTable();
 

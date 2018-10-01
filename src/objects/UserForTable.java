@@ -90,4 +90,10 @@ public class UserForTable implements User {
 
     }
 
+    public void setPassword(String strPassword){
+
+        sspPassword.set(strPassword);
+
+    }
+
 }

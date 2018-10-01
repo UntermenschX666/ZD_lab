@@ -56,8 +56,13 @@
             <Font size="34.0" />
          </font>
       </Label>
-      <MenuBar fx:id="mbMenu" layoutX="-7.0" prefHeight="29.0" prefWidth="117.0" stylesheets="@MenuBar.css">
+      <MenuBar fx:id="mbMenu" layoutX="-7.0" prefHeight="29.0" prefWidth="234.0" stylesheets="@MenuBar.css">
         <menus>
+            <Menu mnemonicParsing="false" text="Settings">
+              <items>
+                <MenuItem fx:id="miChangePassword" mnemonicParsing="false" onAction="#handleMiChangePassword" text="Change password" />
+              </items>
+            </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
               <MenuItem fx:id="miAdd" mnemonicParsing="false" onAction="#handleMiAdd" text="Add" />

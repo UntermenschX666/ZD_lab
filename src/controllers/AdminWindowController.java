@@ -56,7 +56,20 @@ public class AdminWindowController {
     private Button btnEndSession;
 
     @FXML
-    void handleBtnEndSession(ActionEvent event) {
+    private  void handleMiChangePassword(ActionEvent event) throws Exception{
+
+        stgChangePassword = new Stage();
+
+        createWindow(stgChangePassword, strNameChangePassword,
+                FXMLLoader.load(getClass().getResource(strPathFxmlChangePasswordWindow)));
+
+        setModalWindow(stgChangePassword,stgAdmin);
+
+        stgChangePassword.show();
+    }
+
+    @FXML
+    private void handleBtnEndSession(ActionEvent event) {
 
         stgAuthorization.show();
         stgAdmin.close();
@@ -64,42 +77,40 @@ public class AdminWindowController {
     }
 
     @FXML
-    void handleBtnSaveChanges(ActionEvent event) {
+    private void handleBtnSaveChanges(ActionEvent event) {
 
     }
 
     @FXML
-    void handleMiAdd(ActionEvent event) throws Exception{
+    private void handleMiAdd(ActionEvent event) throws Exception{
 
         stgAddUser = new Stage();
 
         createWindow(stgAddUser, strNameAddUserWindow,
                 FXMLLoader.load(getClass().getResource(strPathFxmlAddUserWindow)));
 
-        stgAddUser.initModality(Modality.WINDOW_MODAL);
-        stgAddUser.initOwner(stgAdmin);
+        setModalWindow(stgAddUser,stgAdmin);
 
         stgAddUser.show();
 
     }
 
     @FXML
-    void handleMiRemove(ActionEvent event) throws Exception{
+    private void handleMiRemove(ActionEvent event) throws Exception{
 
         stgRemoveUser = new Stage();
 
         createWindow(stgRemoveUser, strNameRemoveUserWindow,
                 FXMLLoader.load(getClass().getResource(strPathFxmlRemoveUserWindow)));
 
-        stgRemoveUser.initModality(Modality.WINDOW_MODAL);
-        stgRemoveUser.initOwner(stgAdmin);
+        setModalWindow(stgRemoveUser,stgAdmin);
 
         stgRemoveUser.show();
 
     }
 
     @FXML
-    private void initialize(){
+    private void initialize() throws Exception{
 
         outToTableView();
 
@@ -147,7 +158,13 @@ public class AdminWindowController {
 
                 User user = param.getValue();
 
-                SimpleBooleanProperty booleanProp = new SimpleBooleanProperty(user.isBlocked());
+                SimpleBooleanProperty booleanProp;
+
+                if(bRestOrBlock)
+                    booleanProp = new SimpleBooleanProperty(user.isBlocked());
+                else
+                    booleanProp = new SimpleBooleanProperty(user.isRestriction());
+
 
                 booleanProp.addListener(new ChangeListener<Boolean>() {
 
