@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -63,7 +64,7 @@ public class Main extends Application {
 
     public static final String strStyleCheckBoxInTable = "/gui/CheckBox.css";
 
-
+    public static TableView tbvStaticTableUsers; //Сделал через жопу
     public static ArrayUsers arrayUsers;
     public static User curUser;
 
@@ -106,18 +107,8 @@ public class Main extends Application {
     @Override
     public void start(Stage stgAuthorization) throws Exception{
 
-        /*fUsersFile = preparationFile();
-
-        if(fUsersFile == null){
-
-            //MessegeBox
-
-            return;
-        }*/
-
         User adminUser = new UserForSerialize(strAdminName,strStandartPassword,
                 false, true);
-
 
         arrayUsers = new ArrayUsers(adminUser);
 

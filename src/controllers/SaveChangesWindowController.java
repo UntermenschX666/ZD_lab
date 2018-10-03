@@ -4,6 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
+import static start.Main.stgSaveChanges;
+
 public class SaveChangesWindowController {
 
     @FXML
@@ -14,6 +16,8 @@ public class SaveChangesWindowController {
 
     @FXML
     void handleBtnNo(ActionEvent event) {
+
+        stgSaveChanges.close();
 
     }
 

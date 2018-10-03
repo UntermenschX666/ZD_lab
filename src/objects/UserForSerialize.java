@@ -53,6 +53,20 @@ public class UserForSerialize implements User, Serializable {
 
     }
 
+    public boolean equals(User user){
+
+        String strUsername = user.getUserName();
+        String strPassword = user.getPassword();
+        boolean bBlock = user.isBlocked();
+        boolean bRestriction = user.isRestriction();
+
+        if(this.strUserName.equals(strUsername) && this.strPassword.equals(strPassword)
+                && this.bBlock == bBlock && this.bRestriction == bRestriction)
+            return true;
+
+        return false;
+    }
+
     public void setBlock(boolean bBlock) {
 
         this.bBlock = bBlock;

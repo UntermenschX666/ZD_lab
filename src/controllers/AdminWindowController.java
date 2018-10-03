@@ -13,20 +13,18 @@ import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import java.util.ArrayList;
 
 import static start.Main.*;
 
 public class AdminWindowController {
 
-    private static TableView tbvUserTable;
-
     @FXML
-    private TableView tbvUserList;
+    private TableView tbvTableUsers;
 
-
+    private ArrayList<User> arrBufferUsers;
     @FXML
     private TableColumn<User, String> tbcUsername;
 
@@ -69,7 +67,18 @@ public class AdminWindowController {
     }
 
     @FXML
-    private void handleBtnEndSession(ActionEvent event) {
+    private void handleBtnEndSession(ActionEvent event) throws Exception{
+
+        if(!compareTableAndArrrayUesers()){
+
+            stgSaveChanges = new Stage();
+
+            createWindow(stgSaveChanges,strNameSaveChengesWindow,
+                    FXMLLoader.load(getClass().getResource(strPathFxmlSaveChangesWindow)));
+
+            stgSaveChanges.show();
+
+        }
 
         stgAuthorization.show();
         stgAdmin.close();
@@ -116,9 +125,10 @@ public class AdminWindowController {
 
     }
 
+    //Сделал тупо конечно
     public static void refreshTable(){
 
-        tbvUserTable.setItems(FXCollections.observableArrayList(
+        tbvStaticTableUsers.setItems(FXCollections.observableArrayList(
                 arrayUsers.getUsersForTable()
         ));
 
@@ -129,7 +139,9 @@ public class AdminWindowController {
         ObservableList<User> usersTable =
                 FXCollections.observableArrayList(arrayUsers.getUsersForTable());
 
-        tbvUserList.setEditable(true);
+        arrBufferUsers = arrayUsers.getUsersForTable();
+
+        tbvTableUsers.setEditable(true);
 
         tbcUsername.setCellValueFactory(
                 new PropertyValueFactory<User,String>("sspUserName")
@@ -143,8 +155,9 @@ public class AdminWindowController {
 
         createCheckBoxInTable(tbcRestrictions,false);
 
-        tbvUserList.setItems(usersTable);
-        tbvUserTable = tbvUserList;
+        tbvTableUsers.setItems(usersTable);
+
+        tbvStaticTableUsers = tbvTableUsers;
 
     }
 
@@ -208,4 +221,24 @@ public class AdminWindowController {
 
     }
 
+
+    private boolean compareTableAndArrrayUesers(){
+/*
+        ArrayList<User> arrUsers = arrayUsers.getUsersForTable();
+
+        if(arrUsers.size() != arrBufferUsers.size())
+            return false;
+
+        for(int i = 0; i < arrUsers.size(); i++){
+
+            User firstUser = arrBufferUsers.get(i); User secondUser = arrUsers.get(i);
+
+            if(!firstUser.equals(secondUser))
+                return false;
+
+        }
+*/
+        return true;
+
+    }
 }

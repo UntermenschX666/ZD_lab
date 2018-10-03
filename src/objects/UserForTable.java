@@ -54,6 +54,21 @@ public class UserForTable implements User {
 
     }
 
+    public boolean equals(User user){
+
+        String strUsername = user.getUserName();
+        String strPassword = user.getPassword();
+        boolean bBlock = user.isBlocked();
+        boolean bRestriction = user.isRestriction();
+
+        if(sspUserName.get().equals(strUsername) && sspPassword.get().equals(strPassword)
+                && sbpBlock.get() == bBlock && sbpRestriction.get() == bRestriction)
+            return true;
+
+        return false;
+    }
+
+
     public SimpleStringProperty sspUserNameProperty() {
 
         return sspUserName;
