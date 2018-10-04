@@ -33,22 +33,22 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="btnSaveChanges" layoutX="58.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleBtnSaveChanges" prefHeight="33.0" prefWidth="200.0" style="-fx-background-color: #778899;" text="Save changes" textFill="WHITE">
+            <Button fx:id="btnSaveChanges" layoutX="58.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleBtnSaveChanges" prefHeight="33.0" prefWidth="200.0" style="-fx-background-color: white; -fx-border-color: #778899; -fx-border-radius: 25;" text="Save changes" textFill="LIGHTSLATEGRAY">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btnEndSession" layoutX="572.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleBtnEndSession" prefHeight="33.0" prefWidth="200.0" style="-fx-background-color: #778899;" text="End session" textFill="WHITE">
+            <Button fx:id="btnEndSession" layoutX="572.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleBtnEndSession" prefHeight="33.0" prefWidth="200.0" style="-fx-background-color: white; -fx-border-color: #778899; -fx-border-radius: 25;" text="End session" textFill="LIGHTSLATEGRAY">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btnAddUser" layoutX="23.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleBtnAddUser" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #778899;" text="+" textFill="WHITE">
+            <Button fx:id="btnAddUser" layoutX="23.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleBtnAddUser" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: white; -fx-border-color: #778899; -fx-border-radius: 25;" text="+" textFill="LIGHTSLATEGRAY">
                <font>
                   <Font size="9.0" />
                </font>
             </Button>
-            <Button fx:id="btnRemoveUser" layoutX="23.0" layoutY="113.0" mnemonicParsing="false" onAction="#handleBtnRemoveUser" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #778899;" text="-" textFill="WHITE">
+            <Button fx:id="btnRemoveUser" layoutX="23.0" layoutY="113.0" mnemonicParsing="false" onAction="#handleBtnRemoveUser" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: white; -fx-border-color: #778899; -fx-border-radius: 25;" text="-" textFill="LIGHTSLATEGRAY">
                <font>
                   <Font size="9.0" />
                </font>
