@@ -21,7 +21,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <ChoiceBox fx:id="chcUserList" layoutX="141.0" layoutY="25.0" prefHeight="33.0" prefWidth="295.0" style="-fx-background-color: white; -fx-border-color: #778899; -fx-border-radius: 5;">
+            <ChoiceBox fx:id="chcUserList" layoutX="141.0" layoutY="25.0" prefHeight="33.0" prefWidth="295.0" style="-fx-background-color: white; -fx-border-color: #778899; -fx-border-radius: 25;">
                <stylesheets>
                   <URL value="@ChoiceBox.css" />
                   <URL value="@ChoiceBox.css" />

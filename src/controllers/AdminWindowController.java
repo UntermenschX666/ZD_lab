@@ -30,9 +30,6 @@ public class AdminWindowController {
     @FXML
     private TableColumn<User, String> tbcUsername;
 
-    //@FXML
-    //private TableColumn<User, String> tbcPassword;
-
     @FXML
     private TableColumn<User, Boolean> tbcBlocked;
 
@@ -43,11 +40,10 @@ public class AdminWindowController {
     private MenuBar mbMenu;
 
     @FXML
-    private MenuItem miAdd;
+    private Button btnAddUser;
 
     @FXML
-    private MenuItem miRemove;
-
+    private Button btnRemoveUser;
 
     @FXML
     private Button btnSaveChanges;
@@ -56,7 +52,7 @@ public class AdminWindowController {
     private Button btnEndSession;
 
     @FXML
-    private  void handleMiChangePassword(ActionEvent event) throws Exception{
+    private void handleMiChangePassword(ActionEvent event) throws Exception{
 
         stgChangePassword = new Stage();
 
@@ -99,7 +95,7 @@ public class AdminWindowController {
     }
 
     @FXML
-    private void handleMiAdd(ActionEvent event) throws Exception{
+    private void handleBtnAddUser(ActionEvent event) throws Exception{
 
         stgAddUser = new Stage();
 
@@ -113,7 +109,7 @@ public class AdminWindowController {
     }
 
     @FXML
-    private void handleMiRemove(ActionEvent event) throws Exception{
+    private void handleBtnRemoveUser(ActionEvent event) throws Exception{
 
         stgRemoveUser = new Stage();
 
@@ -143,12 +139,6 @@ public class AdminWindowController {
         tbcUsername.setCellValueFactory(
                 new PropertyValueFactory<User,String>("sspUserName")
         );
-
-        /*
-        tbcPassword.setCellValueFactory(
-                new PropertyValueFactory<User,String>("sspPassword")
-        );
-        */
 
         createCheckBoxInTable(tbcBlocked,true);
 

@@ -11,11 +11,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="509.0" maxWidth="629.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="509.0" prefWidth="629.0" style="-fx-background-color: #778899;" xmlns="http://javafx.com/javafx/8.0.162-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminWindowController">
+<AnchorPane maxHeight="509.0" maxWidth="822.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="509.0" prefWidth="822.0" style="-fx-background-color: #778899;" xmlns="http://javafx.com/javafx/8.0.162-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminWindowController">
     <children>
-        <AnchorPane layoutY="100.0" maxHeight="413.0" maxWidth="700.0" prefHeight="410.0" prefWidth="629.0" style="-fx-background-color: #ffffff;">
+        <AnchorPane layoutY="100.0" maxHeight="413.0" maxWidth="822.0" prefHeight="409.0" prefWidth="822.0" style="-fx-background-color: #ffffff;">
          <children>
-            <TableView fx:id="tbvTableUsers" fixedCellSize="0.0" layoutX="13.0" layoutY="38.0" opacity="0.7" prefHeight="294.0" prefWidth="604.0" stylesheets="@TableView.css">
+            <TableView fx:id="tbvTableUsers" fixedCellSize="0.0" layoutX="58.0" layoutY="38.0" opacity="0.7" prefHeight="294.0" prefWidth="714.0" stylesheets="@TableView.css">
               <columns>
                 <TableColumn fx:id="tbcUsername" prefWidth="97.0" text="Username" />
                   <TableColumn fx:id="tbcBlocked" minWidth="0.0" prefWidth="76.0" text="Blocked" />
@@ -28,19 +28,29 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <Label layoutX="14.0" layoutY="14.0" text="List registered users:" textFill="LIGHTSLATEGRAY">
+            <Label layoutX="58.0" layoutY="14.0" text="List registered users:" textFill="LIGHTSLATEGRAY">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="btnSaveChanges" layoutX="14.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleBtnSaveChanges" prefHeight="33.0" prefWidth="200.0" style="-fx-background-color: #778899;" text="Save changes" textFill="WHITE">
+            <Button fx:id="btnSaveChanges" layoutX="58.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleBtnSaveChanges" prefHeight="33.0" prefWidth="200.0" style="-fx-background-color: #778899;" text="Save changes" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btnEndSession" layoutX="415.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleBtnEndSession" prefHeight="33.0" prefWidth="200.0" style="-fx-background-color: #778899;" text="End session" textFill="WHITE">
+            <Button fx:id="btnEndSession" layoutX="572.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleBtnEndSession" prefHeight="33.0" prefWidth="200.0" style="-fx-background-color: #778899;" text="End session" textFill="WHITE">
                <font>
                   <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnAddUser" layoutX="23.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleBtnAddUser" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #778899;" text="+" textFill="WHITE">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnRemoveUser" layoutX="23.0" layoutY="113.0" mnemonicParsing="false" onAction="#handleBtnRemoveUser" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #778899;" text="-" textFill="WHITE">
+               <font>
+                  <Font size="9.0" />
                </font>
             </Button>
          </children>
@@ -62,12 +72,6 @@
                 <MenuItem fx:id="miChangePassword" mnemonicParsing="false" onAction="#handleMiChangePassword" text="Change password" />
               </items>
             </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem fx:id="miAdd" mnemonicParsing="false" onAction="#handleMiAdd" text="Add" />
-                  <MenuItem fx:id="miRemove" mnemonicParsing="false" onAction="#handleMiRemove" text="Remove" />
-            </items>
-          </Menu>
         </menus>
       </MenuBar>
     </children>

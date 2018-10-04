@@ -16,7 +16,7 @@
                         <Font size="18.0" />
                     </font>
                 </Button>
-            <TextField fx:id="tfUserName" layoutX="25.0" layoutY="24.0" prefHeight="35.0" prefWidth="300.0" promptText="Username" style="-fx-background-color: #ffffff; -fx-border-color: #778899; -fx-border-radius: 5;" stylesheets="@TextField.css">
+            <TextField fx:id="tfUserName" layoutX="25.0" layoutY="24.0" prefHeight="35.0" prefWidth="300.0" promptText="Username" style="-fx-background-color: #ffffff; -fx-border-color: #778899; -fx-border-radius: 25;" stylesheets="@TextField.css">
                <font>
                   <Font size="18.0" />
                </font>

@@ -14,12 +14,12 @@
    <children>
       <AnchorPane layoutY="100.0" prefHeight="354.0" prefWidth="440.0" style="-fx-background-color: #ffffff;">
          <children>
-            <TextField fx:id="tfLogin" layoutX="70.0" layoutY="104.0" prefHeight="26.0" prefWidth="300.0" promptText="Username" style="-fx-background-color: #ffffff; -fx-border-color: #778899; -fx-border-radius: 5;" stylesheets="@TextField.css">
+            <TextField fx:id="tfLogin" layoutX="70.0" layoutY="104.0" prefHeight="26.0" prefWidth="300.0" promptText="Username" style="-fx-background-color: #ffffff; -fx-border-color: #778899; -fx-border-radius: 25;" stylesheets="@TextField.css">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
-            <PasswordField fx:id="tfPassword" layoutX="71.0" layoutY="148.0" prefHeight="26.0" prefWidth="300.0" promptText="Password" style="-fx-background-color: #ffffff; -fx-border-color: #778899; -fx-border-radius: 5;" stylesheets="@TextField.css">
+            <PasswordField fx:id="tfPassword" layoutX="71.0" layoutY="148.0" prefHeight="26.0" prefWidth="300.0" promptText="Password" style="-fx-background-color: #ffffff; -fx-border-color: #778899; -fx-border-radius: 25;" stylesheets="@TextField.css">
                <font>
                   <Font size="18.0" />
                </font>
