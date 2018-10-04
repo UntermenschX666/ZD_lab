@@ -14,17 +14,17 @@
    <children>
       <AnchorPane layoutY="100.0" prefHeight="354.0" prefWidth="440.0" style="-fx-background-color: #ffffff;">
          <children>
-            <TextField fx:id="tfLogin" layoutX="70.0" layoutY="117.0" prefHeight="26.0" prefWidth="300.0" promptText="Username" style="-fx-background-color: #ffffff; -fx-border-color: #778899; -fx-border-radius: 5;" stylesheets="@TextField.css">
+            <TextField fx:id="tfLogin" layoutX="70.0" layoutY="104.0" prefHeight="26.0" prefWidth="300.0" promptText="Username" style="-fx-background-color: #ffffff; -fx-border-color: #778899; -fx-border-radius: 5;" stylesheets="@TextField.css">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
-            <PasswordField fx:id="tfPassword" layoutX="71.0" layoutY="168.0" prefHeight="26.0" prefWidth="300.0" promptText="Password" style="-fx-background-color: #ffffff; -fx-border-color: #778899; -fx-border-radius: 5;" stylesheets="@TextField.css">
+            <PasswordField fx:id="tfPassword" layoutX="71.0" layoutY="148.0" prefHeight="26.0" prefWidth="300.0" promptText="Password" style="-fx-background-color: #ffffff; -fx-border-color: #778899; -fx-border-radius: 5;" stylesheets="@TextField.css">
                <font>
                   <Font size="18.0" />
                </font>
             </PasswordField>
-            <Button fx:id="btnSignIn" defaultButton="true" layoutX="70.0" layoutY="260.0" mnemonicParsing="false" onAction="#handleBtnSignIn" prefHeight="33.0" prefWidth="300.0" style="-fx-background-color: #778899;" text="Sign In" textFill="WHITE">
+            <Button fx:id="btnSignIn" defaultButton="true" layoutX="70.0" layoutY="231.0" mnemonicParsing="false" onAction="#handleBtnSignIn" prefHeight="33.0" prefWidth="300.0" style="-fx-background-color: #778899;" text="Sign In" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
@@ -34,10 +34,15 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="lblMessege" layoutX="70.0" layoutY="223.0" prefHeight="21.0" prefWidth="300.0" textFill="#997777">
+            <Label fx:id="lblMessege" layoutX="70.0" layoutY="200.0" prefHeight="21.0" prefWidth="300.0" textFill="#997777">
                <font>
                   <Font size="14.0" />
                </font></Label>
+            <Button fx:id="btnExit" defaultButton="true" layoutX="70.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleBtnExit" prefHeight="33.0" prefWidth="300.0" style="-fx-background-color: #778899;" text="Exit" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
       <Label layoutX="14.0" layoutY="29.0" prefHeight="50.0" prefWidth="270.0" text="Lab Work" textFill="#fcf8f8">
@@ -47,12 +52,6 @@
       </Label>
       <MenuBar fx:id="mbMenu" prefHeight="29.0" prefWidth="117.0" stylesheets="@MenuBar.css">
          <menus>
-            <Menu mnemonicParsing="false" text="File">
-               <items>
-                  <MenuItem fx:id="miAdd" mnemonicParsing="false" text="Add" />
-                  <MenuItem fx:id="miRemove" mnemonicParsing="false" text="Remove" />
-               </items>
-            </Menu>
             <Menu mnemonicParsing="false" text="Help">
                <items>
                   <MenuItem fx:id="miAbout" mnemonicParsing="false" onAction="#handleMiAbout" text="About" />

@@ -4,22 +4,20 @@ import interfaces.User;
 
 public class PasswordParser {
 
-    String strUserName;
-    String strPassword;
+    String strNewPassword;
 
-    public PasswordParser(User user){
+    public PasswordParser(String strNewPassword){
 
-        this.strUserName = user.getUserName();
-        this.strPassword = user.getPassword();
+        this.strNewPassword = strNewPassword;
 
     }
 
-    public boolean isCorrectPassward(){
+    public boolean isCorrectPassword(String strUserName){
 
-        if(strPassword.equals(strUserName))
+        if(strNewPassword.equals(strUserName))
             return false;
 
-        if(strPassword.length()<4)
+        if(strNewPassword.length()<3)
             return false;
 
         return true;

@@ -54,8 +54,8 @@ public class ChangePasswordWindowController {
 
         if(curUser.isRestriction()){
 
-            PasswordParser passwordParser = new PasswordParser(curUser);
-            if(!passwordParser.isCorrectPassward()){
+            PasswordParser passwordParser = new PasswordParser(strNewPassword);
+            if(!passwordParser.isCorrectPassword(curUser.getUserName())){
 
                 lblMessege.setText("Password does not comply with restriction");
 

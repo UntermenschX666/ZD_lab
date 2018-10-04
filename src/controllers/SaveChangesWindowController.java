@@ -34,9 +34,9 @@ public class SaveChangesWindowController {
         arrayUsers.serializeUsers(fUsersFile);
         //messegebox
 
-        stgAuthorization.show();
         stgSaveChanges.close();
         stgAdmin.close();
+        stgAuthorization.show();
 
     }
 

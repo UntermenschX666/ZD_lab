@@ -41,6 +41,13 @@ public class AuthorizationWindowController {
     }
 
     @FXML
+    private void handleBtnExit(ActionEvent event) {
+
+        stgAuthorization.close();
+
+    }
+
+    @FXML
     private void handleBtnSignIn(ActionEvent event) throws Exception {
 
         String strUserName = tfLogin.getText();
@@ -56,21 +63,20 @@ public class AuthorizationWindowController {
             return;
         }
 
+        if(curUser.isBlocked()){
+
+            lblMessege.setText("You are blocked");
+
+            return;
+        }
+
         if(!curUser.getPassword().equals(strPassword)){
 
             lblMessege.setText("Wrong password");
             curUser.addTryCount();
 
-            if(curUser.getTryCount() == 4)
+            if(curUser.getTryCount() == 3)
                 curUser.setBlock(true);
-
-            return;
-        }
-
-
-        if(curUser.isBlocked()){
-
-            lblMessege.setText("You are blocked");
 
             return;
         }
@@ -110,6 +116,7 @@ public class AuthorizationWindowController {
             if(curUser.getPassword().equals(strStandartPassword)){
 
                 FirstEntry(stgAdmin);
+                addCloseHandler(stgFirstEntry);
                 stgFirstEntry.showAndWait();
 
             }

@@ -2,12 +2,15 @@ package start;
 
 import interfaces.User;
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import objects.ArrayUsers;
 import objects.UserForSerialize;
 import objects.UserForVisual;
@@ -73,6 +76,20 @@ public class Main extends Application {
         stgWindow.getIcons().add(new Image(strPathIcon));
         stgWindow.setScene(new Scene(root));
         stgWindow.setResizable(false);
+
+    }
+
+    public static void addCloseHandler(Stage stgWindow){
+
+        stgWindow.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            public void handle(WindowEvent we) {
+
+                Platform.exit();
+                System.exit(0);
+
+            }
+
+        });
 
     }
 

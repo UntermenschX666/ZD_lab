@@ -41,7 +41,7 @@ public class RemoveUserWindowController {
     @FXML
     private void initialize(){
 
-        chcUserList.setItems(arrayUsers.getUsersForVisual());
+        chcUserList.setItems(arrayUsers.getUsersForVisualWithoutAdmin());
 
     }
 

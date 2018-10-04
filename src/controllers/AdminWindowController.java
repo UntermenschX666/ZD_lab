@@ -30,8 +30,8 @@ public class AdminWindowController {
     @FXML
     private TableColumn<User, String> tbcUsername;
 
-    @FXML
-    private TableColumn<User, String> tbcPassword;
+    //@FXML
+    //private TableColumn<User, String> tbcPassword;
 
     @FXML
     private TableColumn<User, Boolean> tbcBlocked;
@@ -96,9 +96,6 @@ public class AdminWindowController {
 
         arrayUsers.serializeUsers(fUsersFile);
 
-        stgAdmin.close();
-        stgAuthorization.show();
-
     }
 
     @FXML
@@ -147,9 +144,11 @@ public class AdminWindowController {
                 new PropertyValueFactory<User,String>("sspUserName")
         );
 
+        /*
         tbcPassword.setCellValueFactory(
                 new PropertyValueFactory<User,String>("sspPassword")
         );
+        */
 
         createCheckBoxInTable(tbcBlocked,true);
 
@@ -171,6 +170,9 @@ public class AdminWindowController {
             public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<User, Boolean> param) {
 
                 User user = param.getValue();
+
+
+
 
                 SimpleBooleanProperty booleanProp;
 
@@ -194,6 +196,8 @@ public class AdminWindowController {
                     }
 
                 });
+
+
 
                 return booleanProp;
 
