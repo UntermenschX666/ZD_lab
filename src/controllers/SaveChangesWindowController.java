@@ -1,10 +1,12 @@
 package controllers;
 
+import interfaces.User;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-import static start.Main.stgSaveChanges;
+import static start.Main.*;
 
 public class SaveChangesWindowController {
 
@@ -17,14 +19,27 @@ public class SaveChangesWindowController {
     @FXML
     void handleBtnNo(ActionEvent event) {
 
+
+        arrayUsers.replaceArrayList(arrBufferUsers);
+
+        stgAuthorization.show();
         stgSaveChanges.close();
+        stgAdmin.close();
 
     }
 
     @FXML
     void handleBtnYes(ActionEvent event) {
 
+        arrayUsers.serializeUsers(fUsersFile);
+        //messegebox
+
+        stgAuthorization.show();
+        stgSaveChanges.close();
+        stgAdmin.close();
+
     }
+
 
 }
 

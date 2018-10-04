@@ -4,29 +4,35 @@ import interfaces.User;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-public class UserForTable implements User {
+//Костыль от бога вставлять лишнюю переменную просто пиздец, когда нет времени как придумать нормально
+import java.io.Serializable;
+
+public class UserForVisual implements User, Serializable {
 
     private SimpleStringProperty sspUserName;
     private SimpleStringProperty sspPassword;
     private SimpleBooleanProperty sbpBlock;
     private SimpleBooleanProperty sbpRestriction;
+    public int nTryCount;
 
-    public UserForTable(String strUserName, String strPassword,
-                            boolean bBlock, boolean bRestriction){
+    public UserForVisual(String strUserName, String strPassword,
+                         boolean bBlock, boolean bRestriction){
 
         sspUserName = new SimpleStringProperty(strUserName);
         sspPassword = new SimpleStringProperty(strPassword);
         sbpBlock = new SimpleBooleanProperty(bBlock);
         sbpRestriction = new SimpleBooleanProperty(bRestriction);
+        nTryCount = 0;
 
     }
 
-    public UserForTable(User user){
+    public UserForVisual(User user){
 
         sspUserName = new SimpleStringProperty(user.getUserName());
         sspPassword = new SimpleStringProperty(user.getPassword());
         sbpBlock = new SimpleBooleanProperty(user.isBlocked());
         sbpRestriction = new SimpleBooleanProperty(user.isRestriction());
+        nTryCount = 0;
 
     }
 
@@ -111,4 +117,27 @@ public class UserForTable implements User {
 
     }
 
+    public int getTryCount(){
+
+        return nTryCount;
+
+    }
+
+    public void setTryCount(int nTryCount){
+
+        this.nTryCount = nTryCount;
+
+    }
+
+    public void addTryCount(){
+
+        this.nTryCount += 1;
+
+    }
+
+     public String toString(){
+
+        return sspUserName.get();
+
+    }
 }

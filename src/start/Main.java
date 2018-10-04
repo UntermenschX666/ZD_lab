@@ -5,16 +5,15 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import objects.ArrayUsers;
 import objects.UserForSerialize;
-import sun.rmi.server.UnicastServerRef;
+import objects.UserForVisual;
 
 import java.io.File;
-import java.io.IOException;
+import java.util.ArrayList;
 
 public class Main extends Application {
 
@@ -64,8 +63,8 @@ public class Main extends Application {
 
     public static final String strStyleCheckBoxInTable = "/gui/CheckBox.css";
 
-    public static TableView tbvStaticTableUsers; //Сделал через жопу
     public static ArrayUsers arrayUsers;
+    public static ArrayList<User> arrBufferUsers;
     public static User curUser;
 
     public static void createWindow(Stage stgWindow, final String strWindowName, Parent root ){
@@ -84,21 +83,7 @@ public class Main extends Application {
 
     }
 
-    private File preparationFile(){
 
-        File file = new File(strFileName);
-
-        if(file.exists()){
-            try{
-                file.createNewFile();
-            }catch (IOException ex){
-                return null;
-            }
-        }
-
-        return file;
-
-    }
 
     public static void main(String[] args) {
         launch(args);
@@ -107,10 +92,23 @@ public class Main extends Application {
     @Override
     public void start(Stage stgAuthorization) throws Exception{
 
-        User adminUser = new UserForSerialize(strAdminName,strStandartPassword,
-                false, true);
+        fUsersFile = new File(strFileName);
+        arrayUsers = new ArrayUsers();
 
-        arrayUsers = new ArrayUsers(adminUser);
+        if (fUsersFile.length() == 0 ) {
+
+            User adminUser = new UserForVisual(strAdminName, strStandartPassword,
+                    false, true);
+
+            arrayUsers.add(adminUser);
+
+            if (!arrayUsers.serializeUsers(fUsersFile)) {
+                System.out.println("Error serial"); //MessegeBox
+                return;
+            }
+
+
+        }
 
         this.stgAuthorization = stgAuthorization;
 

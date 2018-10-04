@@ -6,9 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import objects.UserForTable;
+import objects.UserForVisual;
 
-import static controllers.AdminWindowController.refreshTable;
 import static start.Main.*;
 
 public class AddUserWindowController {
@@ -40,12 +39,11 @@ public class AddUserWindowController {
         boolean bRestriction = chbRestriction.isSelected();
         int intSize = arrayUsers.getSize();
 
-        arrayUsers.add(new UserForTable(strUserName, strPassword, bBlock, bRestriction));
+        arrayUsers.add(new UserForVisual(strUserName, strPassword, bBlock, bRestriction));
 
         if(intSize != arrayUsers.getSize()) {
 
             refreshAddWindow();
-            refreshTable();
 
             return;
 

@@ -1,15 +1,14 @@
 package controllers;
 
-        import javafx.event.ActionEvent;
-        import javafx.fxml.FXML;
-        import javafx.scene.control.Button;
-        import javafx.scene.control.Label;
-        import javafx.scene.control.PasswordField;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 
-        import static controllers.AdminWindowController.refreshTable;
-        import static start.Main.arrayUsers;
-        import static start.Main.curUser;
-        import static start.Main.stgFirstEntry;
+import static start.Main.arrayUsers;
+import static start.Main.curUser;
+import static start.Main.stgFirstEntry;
 
 public class FirstEntryWindowController {
 

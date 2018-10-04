@@ -15,16 +15,18 @@ import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+
 import java.util.ArrayList;
 
 import static start.Main.*;
 
 public class AdminWindowController {
 
+
+
     @FXML
     private TableView tbvTableUsers;
 
-    private ArrayList<User> arrBufferUsers;
     @FXML
     private TableColumn<User, String> tbcUsername;
 
@@ -69,14 +71,18 @@ public class AdminWindowController {
     @FXML
     private void handleBtnEndSession(ActionEvent event) throws Exception{
 
-        if(!compareTableAndArrrayUesers()){
+        if(!compareTableAndArrrayUesers(arrBufferUsers,arrayUsers.getUsersForVisual())){
 
             stgSaveChanges = new Stage();
 
             createWindow(stgSaveChanges,strNameSaveChengesWindow,
                     FXMLLoader.load(getClass().getResource(strPathFxmlSaveChangesWindow)));
 
+            setModalWindow(stgSaveChanges,stgAdmin);
+
             stgSaveChanges.show();
+
+            return;
 
         }
 
@@ -87,6 +93,11 @@ public class AdminWindowController {
 
     @FXML
     private void handleBtnSaveChanges(ActionEvent event) {
+
+        arrayUsers.serializeUsers(fUsersFile);
+
+        stgAdmin.close();
+        stgAuthorization.show();
 
     }
 
@@ -121,27 +132,16 @@ public class AdminWindowController {
     @FXML
     private void initialize() throws Exception{
 
+        arrBufferUsers = new ArrayList<User>();
+
         outToTableView();
-
-    }
-
-    //Сделал тупо конечно
-    public static void refreshTable(){
-
-        tbvStaticTableUsers.setItems(FXCollections.observableArrayList(
-                arrayUsers.getUsersForTable()
-        ));
 
     }
 
     private void outToTableView() {
 
-        ObservableList<User> usersTable =
-                FXCollections.observableArrayList(arrayUsers.getUsersForTable());
-
-        arrBufferUsers = arrayUsers.getUsersForTable();
-
         tbvTableUsers.setEditable(true);
+
 
         tbcUsername.setCellValueFactory(
                 new PropertyValueFactory<User,String>("sspUserName")
@@ -155,9 +155,10 @@ public class AdminWindowController {
 
         createCheckBoxInTable(tbcRestrictions,false);
 
-        tbvTableUsers.setItems(usersTable);
+        //Обязательно буффер должен состоять из UserForSerialize иначе ничего не сохраниться
+        arrBufferUsers = saveBufferTableUsers(arrayUsers.getUsersForSerialize());
 
-        tbvStaticTableUsers = tbvTableUsers;
+        tbvTableUsers.setItems(arrayUsers.getUsersForVisual());
 
     }
 
@@ -221,23 +222,32 @@ public class AdminWindowController {
 
     }
 
+    private ArrayList<User> saveBufferTableUsers(ObservableList<User> arrSaved){
 
-    private boolean compareTableAndArrrayUesers(){
-/*
-        ArrayList<User> arrUsers = arrayUsers.getUsersForTable();
+        ArrayList<User> arrBuffer = new ArrayList<User>();
 
-        if(arrUsers.size() != arrBufferUsers.size())
+        for(User user : arrSaved)
+            arrBuffer.add(user);
+
+        return arrBuffer;
+
+    }
+
+    private boolean compareTableAndArrrayUesers(ArrayList<User> arrPrevUsers, ObservableList<User> arrCurUsers){
+
+
+        if(arrPrevUsers.size() != arrCurUsers.size())
             return false;
 
-        for(int i = 0; i < arrUsers.size(); i++){
+        for(int i = 0; i < arrCurUsers.size(); i++){
 
-            User firstUser = arrBufferUsers.get(i); User secondUser = arrUsers.get(i);
+            User firstUser = arrPrevUsers.get(i); User secondUser = arrCurUsers.get(i);
 
             if(!firstUser.equals(secondUser))
                 return false;
 
         }
-*/
+
         return true;
 
     }

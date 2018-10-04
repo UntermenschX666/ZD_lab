@@ -1,5 +1,5 @@
 package interfaces;
-
+//в Userах вставлена ненужная переменная придумай как от нее избавится например с помощью нового класса TryCounter
 public interface User {
 
  String getUserName();
@@ -17,5 +17,12 @@ public interface User {
  void setRestriction(boolean bRestriction);
 
  void setPassword(String strPassword);
+
+ void setTryCount(int nTryCount);
+
+ int getTryCount();
+
+ void addTryCount();
+
 
 }

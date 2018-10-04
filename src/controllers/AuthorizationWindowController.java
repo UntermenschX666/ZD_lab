@@ -7,11 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import objects.ArrayUsers;
-import java.io.File;
-import java.io.IOException;
 import start.Main;
 
 import static start.Main.*;
@@ -49,9 +45,9 @@ public class AuthorizationWindowController {
 
         String strUserName = tfLogin.getText();
         String strPassword = tfPassword.getText();
-
-
+        //Когда нет времени придумывать пора вставлять уродские костыли
         curUser = arrayUsers.getUser(strUserName);
+
 
         if(curUser == null){
 
@@ -60,14 +56,28 @@ public class AuthorizationWindowController {
             return;
         }
 
-        if (!curUser.getPassword().equals(strPassword)){
+        if(!curUser.getPassword().equals(strPassword)){
 
             lblMessege.setText("Wrong password");
+            curUser.addTryCount();
+
+            if(curUser.getTryCount() == 4)
+                curUser.setBlock(true);
+
+            return;
+        }
+
+
+        if(curUser.isBlocked()){
+
+            lblMessege.setText("You are blocked");
 
             return;
         }
 
         if(curUser.getUserName().equals(strAdminName)){
+
+            curUser.setTryCount(0);
 
             stgAuthorization.hide();
             refreshAuthorizationWindow();
@@ -92,6 +102,8 @@ public class AuthorizationWindowController {
 
         if(curUser.getUserName().equals(strUserName)) {
 
+            curUser.setTryCount(0);
+
             stgAuthorization.hide();
             refreshAuthorizationWindow();
 
@@ -104,7 +116,7 @@ public class AuthorizationWindowController {
 
             stgUser = new Stage();
 
-            createWindow(Main.stgUser,Main.strNameUserWindow,
+            createWindow(stgUser,strNameUserWindow,
                     FXMLLoader.load(getClass().getResource(Main.strPathFxmlUserWindow)));
 
             stgUser.show();
@@ -118,27 +130,10 @@ public class AuthorizationWindowController {
     @FXML
     private void initialize(){
 
-
-        //arrayUsers.test();
-        /*
-        if (fUsersList.exists()){
-            try {
-
-                if (!fUsersList.createNewFile()) {
-                    //MassegeBox
-                    stgAuthorization.close();
-                }
-
-
-            }
-            catch (IOException ex){
-                //MassegeBox
-                stgAuthorization.close();
-            }
-
-        }*/
-
-
+        if(!arrayUsers.deserializeUsers(fUsersFile)) {
+            //System.out.println("Error deserial");
+            //messegebox
+        }
     }
 
     private void FirstEntry(Stage stgAdminOrUser) throws Exception{
@@ -159,3 +154,5 @@ public class AuthorizationWindowController {
     }
 
 }
+
+

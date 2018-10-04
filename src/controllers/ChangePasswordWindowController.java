@@ -6,7 +6,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 
-import static controllers.AdminWindowController.refreshTable;
 import static start.Main.arrayUsers;
 import static start.Main.curUser;
 import static start.Main.stgChangePassword;
@@ -54,8 +53,6 @@ public class ChangePasswordWindowController {
 
         curUser.setPassword(strNewPassword);
         arrayUsers.replaceUser(curUser);
-
-        refreshTable();
 
         stgChangePassword.close();
 

@@ -1,19 +1,25 @@
 package objects;
 
 import interfaces.User;
-
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import java.io.*;
 import java.util.ArrayList;
 
 public class ArrayUsers {
 
-    private ArrayList<User> arrUsers;
+    private ObservableList<User> arrUsers;
 
     public ArrayUsers(User user){
 
-        arrUsers = new ArrayList<User>();
+        arrUsers = FXCollections.observableArrayList();
         arrUsers.add(user);
 
+    }
+
+    public ArrayUsers(){
+
+        arrUsers = FXCollections.observableArrayList();
     }
 
     public void remove(User user){
@@ -73,7 +79,7 @@ public class ArrayUsers {
         return null;
 
     }
-
+    //подправить иначе крашится отображение на форме ппри смене пороля
     public void replaceUser(User userReplacement){
 
         User userTarget;
@@ -104,9 +110,11 @@ public class ArrayUsers {
 
         convertToSerializeUsers();
 
+        ArrayList<User> arrBuffer = convertFromObserbListToArrayList(arrUsers);
+
         try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))){
 
-            oos.writeObject(arrUsers);
+            oos.writeObject(arrBuffer);
 
         }catch (Exception e){
 
@@ -122,9 +130,11 @@ public class ArrayUsers {
 
         arrUsers.clear();
 
+        ArrayList<User> arrBuffer = new ArrayList<User>();
+
         try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))){
 
-            arrUsers = (ArrayList<User>)ois.readObject();
+            arrBuffer = ((ArrayList<User>)ois.readObject());
 
         }catch(Exception e){
 
@@ -132,11 +142,15 @@ public class ArrayUsers {
 
         }
 
+        arrUsers = convertFromArrayListToObserbList(arrBuffer);
+
+        convertToVisualUsers();
+
         return true;
 
     }
 
-    public ArrayList<User> getUsersForSerialize() {
+    public ObservableList<User> getUsersForSerialize() {
 
         convertToSerializeUsers();
 
@@ -144,40 +158,54 @@ public class ArrayUsers {
 
     }
 
-    public ArrayList<User> getUsersForTable(){
+    public ObservableList<User> getUsersForVisual(){
 
-        convertToTableUsers();
-
-        return arrUsers;
-
-    }
-
-    public ArrayList<User> getUsersForChoiceBox(){
-
-        convertToChoiceBoxUsers();
+        convertToVisualUsers();
 
         return arrUsers;
 
     }
 
+    //Не защищенный метод
+    public void replaceArrayList(ArrayList<User> arrReplacment){
+
+        arrUsers.clear();
+
+        for(User user : arrReplacment)
+            arrUsers.add(user);
+
+    }
 
 
+    private ObservableList<User> convertFromArrayListToObserbList(ArrayList<User> fromList){
 
-    private void convertToChoiceBoxUsers(){
+        ObservableList<User> toList = FXCollections.observableArrayList();
 
-        for (int i = 0; i < arrUsers.size(); i++) {
-
-            arrUsers.set(i,new UserForChoiceBox(arrUsers.get(i)));
-
+        for(User user : fromList){
+            toList.add(user);
         }
 
+        return toList;
     }
 
-    private void convertToTableUsers(){
+    private ArrayList<User> convertFromObserbListToArrayList(ObservableList<User> fromList){
+
+        ArrayList<User> toList = new ArrayList<User>();
+
+        for(User user : fromList){
+            toList.add(user);
+        }
+
+        return toList;
+    }
+
+
+
+    private void convertToVisualUsers(){
 
         for (int i = 0; i < arrUsers.size(); i++) {
-
-            arrUsers.set(i,new UserForTable(arrUsers.get(i)));
+            User user = arrUsers.get(i);
+            arrUsers.set(i,new UserForVisual(user));
 
         }
 
@@ -186,12 +214,14 @@ public class ArrayUsers {
     private void convertToSerializeUsers(){
 
         for (int i = 0; i < arrUsers.size(); i++) {
-
-            arrUsers.set(i,new UserForSerialize(arrUsers.get(i)));
+            User user = arrUsers.get(i);
+            arrUsers.set(i,new UserForSerialize(user));
 
         }
 
     }
+
+
 
 
 }
