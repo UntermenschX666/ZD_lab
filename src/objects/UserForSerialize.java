@@ -107,4 +107,13 @@ public class UserForSerialize implements User, Serializable {
 
     }
 
+    public void setUser(User user){
+
+        this.strUserName = user.getUserName();
+        this.strPassword = user.getPassword();
+        this.bBlock = user.isBlocked();
+        this.bRestriction = user.isRestriction();
+
+    }
+
 }

@@ -24,5 +24,7 @@ public interface User {
 
  void addTryCount();
 
+ void setUser(User user);
+
 
 }

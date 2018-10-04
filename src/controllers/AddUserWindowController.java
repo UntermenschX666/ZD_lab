@@ -39,17 +39,24 @@ public class AddUserWindowController {
         boolean bRestriction = chbRestriction.isSelected();
         int intSize = arrayUsers.getSize();
 
+
+        if(!checkCorrectUsername(strUserName)){
+
+            lblMessege.setText("Incorrect username");
+            return;
+        }
+
         arrayUsers.add(new UserForVisual(strUserName, strPassword, bBlock, bRestriction));
 
-        if(intSize != arrayUsers.getSize()) {
+        if(intSize == arrayUsers.getSize()) {
 
-            refreshAddWindow();
+            lblMessege.setText("A user with that name already exists");
 
             return;
 
         }
 
-        lblMessege.setText("A user with that name already exists");
+        refreshAddWindow();
 
     }
 
@@ -66,6 +73,27 @@ public class AddUserWindowController {
         tfUserName.setText("");
         chbBlock.setSelected(false);
         chbRestriction.setSelected(false);
+
+    }
+
+    private boolean checkCorrectUsername(String strUserName){
+
+        if(strUserName.isEmpty())
+            return false;
+
+        if(strUserName.length()<2)
+            return false;
+        /*
+        for(int i = 0; i < strUserName.length(); i++){
+
+
+
+        }*/
+        if(!strUserName.matches("^[a-zA-z0-9]+$"))
+            return false;
+
+
+        return true;
 
     }
 

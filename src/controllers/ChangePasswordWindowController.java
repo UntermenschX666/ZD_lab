@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import objects.PasswordParser;
 
 import static start.Main.arrayUsers;
 import static start.Main.curUser;
@@ -46,9 +47,22 @@ public class ChangePasswordWindowController {
 
         if(!strNewPassword.equals(strConfirmPassword)){
 
-            lblMessege.setText("Passwords do not match");
+            lblMessege.setText("Password does not match");
 
             return;
+        }
+
+        if(curUser.isRestriction()){
+
+            PasswordParser passwordParser = new PasswordParser(curUser);
+            if(!passwordParser.isCorrectPassward()){
+
+                lblMessege.setText("Password does not comply with restriction");
+
+                return;
+
+            }
+
         }
 
         curUser.setPassword(strNewPassword);

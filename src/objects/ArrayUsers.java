@@ -89,7 +89,7 @@ public class ArrayUsers {
             userTarget = arrUsers.get(i);
 
             if(userTarget.getUserName().equals(userReplacement.getUserName())){
-                arrUsers.set(i,userReplacement);
+                arrUsers.get(i).setUser(userReplacement);
             }
 
         }

@@ -140,4 +140,14 @@ public class UserForVisual implements User, Serializable {
         return sspUserName.get();
 
     }
+
+    public void setUser(User user){
+
+        sspUserName.set(user.getUserName());
+        sspPassword.set(user.getPassword());
+        sbpBlock.set(user.isBlocked());
+        sbpRestriction.set(user.isRestriction());
+
+    }
+
 }
