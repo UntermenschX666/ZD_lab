@@ -105,7 +105,7 @@ public class ArrayUsers {
 
         return true;
     }
-
+    //Костыль в виде converToVisualUsers()
     public boolean serializeUsers(File file){
 
         convertToSerializeUsers();
@@ -121,6 +121,8 @@ public class ArrayUsers {
             return false;
 
         }
+
+        convertToVisualUsers();
 
         return true;
 
@@ -166,38 +168,12 @@ public class ArrayUsers {
 
     }
 
-    public ObservableList<User> getUsersForSerializeWithoutAdmin(){
-
-        ObservableList<User> arrBuffer = FXCollections.observableArrayList();
-
-        convertToSerializeUsers();
-
-        for (int i = 1; i < arrUsers.size(); i++)
-            arrBuffer.add(arrUsers.get(i));
-
-
-        return arrBuffer;
-    }
-
-    public ObservableList<User> getUsersForVisualWithoutAdmin(){
-
-        ObservableList<User> arrBuffer = FXCollections.observableArrayList();
-
-        convertToVisualUsers();
-
-        for (int i = 1; i < arrUsers.size(); i++)
-            arrBuffer.add(arrUsers.get(i));
-
-
-        return arrBuffer;
-    }
-    //Не защищенный метод
     public void replaceArrayList(ArrayList<User> arrReplacment){
 
         arrUsers.clear();
 
         for(User user : arrReplacment)
-            arrUsers.add(user);
+            add(user);
 
     }
 

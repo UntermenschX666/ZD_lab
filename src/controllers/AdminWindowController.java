@@ -111,14 +111,24 @@ public class AdminWindowController {
     @FXML
     private void handleBtnRemoveUser(ActionEvent event) throws Exception{
 
-        stgRemoveUser = new Stage();
+        //stgRemoveUser = new Stage();
 
-        createWindow(stgRemoveUser, strNameRemoveUserWindow,
-                FXMLLoader.load(getClass().getResource(strPathFxmlRemoveUserWindow)));
+        //createWindow(stgRemoveUser, strNameRemoveUserWindow,
+        //FXMLLoader.load(getClass().getResource(strPathFxmlRemoveUserWindow)));
 
-        setModalWindow(stgRemoveUser,stgAdmin);
+        //setModalWindow(stgRemoveUser,stgAdmin);
 
-        stgRemoveUser.show();
+        //stgRemoveUser.show();
+
+        User selectUser = (User)tbvTableUsers.getSelectionModel().getSelectedItem();
+
+        if(selectUser == null)
+            return;
+
+        if(selectUser.getUserName().equals(strAdminName))
+            return;
+
+        arrayUsers.remove(selectUser);
 
     }
 
