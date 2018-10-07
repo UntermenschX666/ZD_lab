@@ -171,9 +171,6 @@ public class AdminWindowController {
 
                 User user = param.getValue();
 
-
-
-
                 SimpleBooleanProperty booleanProp;
 
                 if(bRestOrBlock)
@@ -192,6 +189,8 @@ public class AdminWindowController {
                             user.setBlock(newValue);
                         else
                             user.setRestriction(newValue);
+
+
 
                     }
 

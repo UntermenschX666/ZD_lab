@@ -10,6 +10,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import start.Main;
 
+import java.awt.*;
+
 import static start.Main.*;
 
 
@@ -141,6 +143,7 @@ public class AuthorizationWindowController {
             //System.out.println("Error deserial");
             //messegebox
         }
+
     }
 
     private void FirstEntry(Stage stgAdminOrUser) throws Exception{
