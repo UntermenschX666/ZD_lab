@@ -40,7 +40,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="btnNext" defaultButton="true" layoutX="68.0" layoutY="240.0" mnemonicParsing="false" onAction="#handleBtnNext" prefHeight="33.0" prefWidth="300.0" style="-fx-background-color: white; -fx-border-color: #778899; -fx-border-radius: 25;" text="Next" textFill="LIGHTSLATEGRAY">
+            <Button fx:id="btnNext" defaultButton="true" layoutX="68.0" layoutY="240.0" mnemonicParsing="false" onAction="#handleBtnNext" prefHeight="33.0" prefWidth="300.0" style="-fx-background-color: white; -fx-border-color: #778899; -fx-border-radius: 25;" stylesheets="@Button.css" text="Next" textFill="LIGHTSLATEGRAY">
                <font>
                   <Font size="18.0" />
                </font>

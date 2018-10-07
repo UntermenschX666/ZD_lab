@@ -7,7 +7,10 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -38,7 +41,6 @@ public class Main extends Application {
     public static final String strPathFxmlAdminWindow = "/gui/AdminWindow.fxml";
     public static final String strPathFxmlAboutWindow = "/gui/AboutWindow.fxml";
     public static final String strPathFxmlAddUserWindow = "/gui/AddUserWindow.fxml";
-    public static final String strPathFxmlRemoveUserWindow = "/gui/RemoveUserWindow.fxml";
     public static final String strPathFxmlSaveChangesWindow = "/gui/SaveChangesWindow.fxml";
     public static final String strPathFxmlFirstEntryWindow = "/gui/FirstEntryWindow.fxml";
     public static final String strPathFxmlMessegeWindow = "/gui/MessegeWindow.fxml";
@@ -50,7 +52,6 @@ public class Main extends Application {
     public static final String strNameAdminWindow = "Admin";
     public static final String strNameAboutWindow = "About";
     public static final String strNameAddUserWindow = "Add new user";
-    public static final String strNameRemoveUserWindow = "Remove user";
     public static final String strNameSaveChengesWindow = "Save Changes";
     public static final String strNameFirstEntryWindow = "First Entry";
     public static final String strNameMessegeWindow = "Messege";
@@ -62,7 +63,6 @@ public class Main extends Application {
 
     public static final String strAdminName = "admin";
     public static final String strStandartPassword = "";
-    public static final String strStandartUserName = "Username";
 
     public static final String strStyleCheckBoxInTable = "/gui/CheckBox.css";
 

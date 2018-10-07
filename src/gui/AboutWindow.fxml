@@ -24,7 +24,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="btnClose" layoutX="105.0" layoutY="141.0" mnemonicParsing="false" onAction="#handleBtnClose" prefHeight="33.0" prefWidth="230.0" style="-fx-background-color: white; -fx-border-color: #778899; -fx-border-radius: 25;" text="Close" textFill="LIGHTSLATEGRAY">
+            <Button fx:id="btnClose" layoutX="105.0" layoutY="141.0" mnemonicParsing="false" onAction="#handleBtnClose" prefHeight="33.0" prefWidth="230.0" style="-fx-background-color: white; -fx-border-color: #778899; -fx-border-radius: 25;" stylesheets="@Button.css" text="Close" textFill="LIGHTSLATEGRAY">
                <font>
                   <Font size="18.0" />
                </font>

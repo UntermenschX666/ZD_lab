@@ -23,6 +23,19 @@ public class UserWindowController {
     private Label lblRestriction;
 
     @FXML
+    private void handleMiAbout(ActionEvent event) throws Exception {
+
+        stgAbout = new Stage();
+
+        createWindow(stgAbout, strNameAboutWindow,
+                FXMLLoader.load(getClass().getResource(strPathFxmlAboutWindow)));
+
+
+        stgAbout.show();
+
+    }
+
+    @FXML
     private void handleMiChangePassword(ActionEvent event) throws Exception{
 
         stgChangePassword = new Stage();

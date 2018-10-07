@@ -52,6 +52,19 @@ public class AdminWindowController {
     private Button btnEndSession;
 
     @FXML
+    private void handleMiAbout(ActionEvent event) throws Exception {
+
+        stgAbout = new Stage();
+
+        createWindow(stgAbout, strNameAboutWindow,
+                FXMLLoader.load(getClass().getResource(strPathFxmlAboutWindow)));
+
+
+        stgAbout.show();
+
+    }
+
+    @FXML
     private void handleMiChangePassword(ActionEvent event) throws Exception{
 
         stgChangePassword = new Stage();
@@ -88,13 +101,6 @@ public class AdminWindowController {
     }
 
     @FXML
-    private void handleBtnSaveChanges(ActionEvent event) {
-
-        arrayUsers.serializeUsers(fUsersFile);
-
-    }
-
-    @FXML
     private void handleBtnAddUser(ActionEvent event) throws Exception{
 
         stgAddUser = new Stage();
@@ -110,15 +116,6 @@ public class AdminWindowController {
 
     @FXML
     private void handleBtnRemoveUser(ActionEvent event) throws Exception{
-
-        //stgRemoveUser = new Stage();
-
-        //createWindow(stgRemoveUser, strNameRemoveUserWindow,
-        //FXMLLoader.load(getClass().getResource(strPathFxmlRemoveUserWindow)));
-
-        //setModalWindow(stgRemoveUser,stgAdmin);
-
-        //stgRemoveUser.show();
 
         User selectUser = (User)tbvTableUsers.getSelectionModel().getSelectedItem();
 
@@ -178,7 +175,6 @@ public class AdminWindowController {
                 else
                     booleanProp = new SimpleBooleanProperty(user.isRestriction());
 
-
                 booleanProp.addListener(new ChangeListener<Boolean>() {
 
                     @Override
@@ -189,8 +185,6 @@ public class AdminWindowController {
                             user.setBlock(newValue);
                         else
                             user.setRestriction(newValue);
-
-
 
                     }
 
@@ -210,7 +204,26 @@ public class AdminWindowController {
             @Override
             public TableCell<User, Boolean> call(TableColumn<User, Boolean> p) {
 
-                CheckBoxTableCell<User, Boolean> cell = new CheckBoxTableCell<User, Boolean>();
+                CheckBoxTableCell<User, Boolean> cell = new CheckBoxTableCell<User, Boolean>() {
+
+                    @Override
+                    public void updateItem(Boolean item, boolean empty){
+                        super.updateItem(item, empty);
+
+                        TableRow<User> currentRow = getTableRow();
+                        this.setDisable(false);
+                        if (currentRow.getItem() != null && !empty) {
+                            if (currentRow.getItem().getUserName().equals(strAdminName)) {
+                                this.setDisable(true);
+                                setStyle(tbvTableUsers.getStyle());
+                            }
+                        } else {
+
+                            setStyle(tbvTableUsers.getStyle());
+                        }
+                    }
+
+                };
 
                 cell.getStylesheets().add(strStyleCheckBoxInTable);
 
@@ -221,7 +234,6 @@ public class AdminWindowController {
             }
 
         });
-
 
     }
 

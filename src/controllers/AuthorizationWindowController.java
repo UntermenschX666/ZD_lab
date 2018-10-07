@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import objects.Messege;
 import start.Main;
 
 import static start.Main.*;
@@ -26,6 +27,9 @@ public class AuthorizationWindowController {
 
     @FXML
     private Button btnSignIn;
+
+     @FXML
+    private Button btnExit;
 
     @FXML
     private void handleMiAbout(ActionEvent event) throws Exception {
@@ -91,6 +95,7 @@ public class AuthorizationWindowController {
             if(curUser.getPassword().equals(strStandartPassword)){
 
                 FirstEntry(stgAdmin);
+                addCloseHandler(stgFirstEntry);
                 stgFirstEntry.showAndWait();
 
             }
@@ -135,7 +140,9 @@ public class AuthorizationWindowController {
     }
 
     @FXML
-    private void initialize(){
+    private void initialize() throws Exception{
+
+        //Messege msg = new Messege(stgAuthorization,"sd","test",strPathFxmlMessegeWindow,strPathIcon);
 
         if(!arrayUsers.deserializeUsers(fUsersFile)) {
             //System.out.println("Error deserial");

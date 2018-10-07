@@ -5,11 +5,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="435.0" maxWidth="700.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="290.0" prefWidth="440.0" style="-fx-background-color: #778899;" xmlns="http://javafx.com/javafx/8.0.162-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MessegeWindowController">
+<AnchorPane maxHeight="435.0" maxWidth="700.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="290.0" prefWidth="440.0" style="-fx-background-color: #778899;" xmlns="http://javafx.com/javafx/8.0.162-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="objects.Messege">
    <children>
       <AnchorPane layoutY="90.0" maxHeight="341.0" maxWidth="700.0" prefHeight="200.0" prefWidth="440.0" style="-fx-background-color: #ffffff;">
          <children>
-            <Button fx:id="btnOk" layoutX="168.0" layoutY="139.0" mnemonicParsing="false" onAction="#handleBtnOk" prefHeight="33.0" prefWidth="105.0" style="-fx-background-color: #778899;" text="Ok" textFill="WHITE">
+            <Button fx:id="btnOk" layoutX="168.0" layoutY="139.0" mnemonicParsing="false" onAction="#handleBtnOk" prefHeight="33.0" prefWidth="105.0" stylesheets="@Button.css" text="Ok" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>

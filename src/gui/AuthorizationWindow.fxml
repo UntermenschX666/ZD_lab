@@ -24,7 +24,7 @@
                   <Font size="18.0" />
                </font>
             </PasswordField>
-            <Button fx:id="btnSignIn" defaultButton="true" layoutX="157.0" layoutY="230.0" mnemonicParsing="false" onAction="#handleBtnSignIn" prefHeight="35.0" prefWidth="128.0" style="-fx-background-color: white; -fx-border-color: #778899; -fx-border-radius: 25;" text="Sign In" textFill="LIGHTSLATEGRAY">
+            <Button fx:id="btnSignIn" defaultButton="true" layoutX="71.0" layoutY="230.0" mnemonicParsing="false" onAction="#handleBtnSignIn" prefHeight="35.0" prefWidth="300.0" style="-fx-background-color: white; -fx-border-color: #778899; -fx-border-radius: 25;" stylesheets="@Button.css" text="Sign In" textFill="LIGHTSLATEGRAY">
                <font>
                   <Font size="18.0" />
                </font>
@@ -38,7 +38,7 @@
                <font>
                   <Font size="14.0" />
                </font></Label>
-            <Button fx:id="btnExit" defaultButton="true" layoutX="161.0" layoutY="278.0" mnemonicParsing="false" onAction="#handleBtnExit" prefHeight="33.0" prefWidth="121.0" style="-fx-background-color: white; -fx-border-color: #778899; -fx-border-radius: 25;" text="Exit" textFill="LIGHTSLATEGRAY">
+            <Button fx:id="btnExit" defaultButton="true" layoutX="71.0" layoutY="278.0" mnemonicParsing="false" onAction="#handleBtnExit" prefHeight="35.0" prefWidth="300.0" style="-fx-background-color: white; -fx-border-color: #778899; -fx-border-radius: 25;" text="Exit" textFill="LIGHTSLATEGRAY">
                <font>
                   <Font size="18.0" />
                </font>

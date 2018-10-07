@@ -9,7 +9,7 @@
    <children>
       <AnchorPane layoutY="90.0" maxHeight="341.0" maxWidth="700.0" prefHeight="200.0" prefWidth="440.0" style="-fx-background-color: #ffffff;">
          <children>
-            <Button fx:id="btnYes" layoutX="48.0" layoutY="138.0" mnemonicParsing="false" onAction="#handleBtnYes" prefHeight="33.0" prefWidth="105.0" style="-fx-background-color: #778899;" text="Yes" textFill="WHITE">
+            <Button fx:id="btnYes" layoutX="48.0" layoutY="138.0" mnemonicParsing="false" onAction="#handleBtnYes" prefHeight="33.0" prefWidth="105.0" stylesheets="@Button.css" text="Yes" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
@@ -19,7 +19,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="btnNo" layoutX="289.0" layoutY="138.0" mnemonicParsing="false" onAction="#handleBtnNo" prefHeight="33.0" prefWidth="105.0" style="-fx-background-color: #778899;" text="No" textFill="WHITE">
+            <Button fx:id="btnNo" layoutX="289.0" layoutY="138.0" mnemonicParsing="false" onAction="#handleBtnNo" prefHeight="33.0" prefWidth="105.0" stylesheets="@Button.css" text="No" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
