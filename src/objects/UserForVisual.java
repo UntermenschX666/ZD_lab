@@ -4,7 +4,6 @@ import interfaces.User;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-//Костыль от бога вставлять лишнюю переменную просто пиздец, когда нет времени как придумать нормально
 import java.io.Serializable;
 
 public class UserForVisual implements User, Serializable {

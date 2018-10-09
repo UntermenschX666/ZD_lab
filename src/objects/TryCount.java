@@ -1,7 +1,5 @@
 package objects;
 
-import interfaces.User;
-
 public class TryCount {
 
     private int tryCount;

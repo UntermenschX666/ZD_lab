@@ -53,26 +53,12 @@ public class AdminWindowController {
     @FXML
     private void handleMiAbout(ActionEvent event) throws Exception {
 
-        stgAbout = new Stage();
-
-        createWindow(stgAbout, strNameAboutWindow,
-                FXMLLoader.load(getClass().getResource(strPathFxmlAboutWindow)));
-
-        setModalWindow(stgAbout,stgAdmin);
-
         stgAbout.show();
 
     }
 
     @FXML
     private void handleMiChangePassword(ActionEvent event) throws Exception{
-
-        stgChangePassword = new Stage();
-
-        createWindow(stgChangePassword, strNameChangePassword,
-                FXMLLoader.load(getClass().getResource(strPathFxmlChangePasswordWindow)));
-
-        setModalWindow(stgChangePassword,stgAdmin);
 
         stgChangePassword.show();
     }
@@ -81,13 +67,6 @@ public class AdminWindowController {
     private void handleBtnEndSession(ActionEvent event) throws Exception{
 
         if(!compareTableAndArrrayUesers(arrBufferUsers,arrayUsers.getUsersForVisual())){
-
-            stgSaveChanges = new Stage();
-
-            createWindow(stgSaveChanges,strNameSaveChengesWindow,
-                    FXMLLoader.load(getClass().getResource(strPathFxmlSaveChangesWindow)));
-
-            setModalWindow(stgSaveChanges,stgAdmin);
 
             stgSaveChanges.show();
 
@@ -102,13 +81,6 @@ public class AdminWindowController {
 
     @FXML
     private void handleBtnAddUser(ActionEvent event) throws Exception{
-
-        stgAddUser = new Stage();
-
-        createWindow(stgAddUser, strNameAddUserWindow,
-                FXMLLoader.load(getClass().getResource(strPathFxmlAddUserWindow)));
-
-        setModalWindow(stgAddUser,stgAdmin);
 
         stgAddUser.show();
 
@@ -131,6 +103,19 @@ public class AdminWindowController {
 
     @FXML
     private void initialize() throws Exception{
+
+        stgSaveChanges = new Stage();
+        stgAddUser = new Stage();
+
+        createWindow(stgSaveChanges,strNameSaveChengesWindow,
+                FXMLLoader.load(getClass().getResource(strPathFxmlSaveChangesWindow)));
+
+        setModalWindow(stgSaveChanges);
+
+        createWindow(stgAddUser, strNameAddUserWindow,
+                FXMLLoader.load(getClass().getResource(strPathFxmlAddUserWindow)));
+
+        setModalWindow(stgAddUser);
 
         arrBufferUsers = new ArrayList<User>();
 

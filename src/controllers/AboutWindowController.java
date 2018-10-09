@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 import static start.Main.stgAbout;
-import static start.Main.stgAuthorization;
 
 public class AboutWindowController {
 

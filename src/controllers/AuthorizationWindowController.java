@@ -1,6 +1,7 @@
 package controllers;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -8,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import objects.TryCounter;
 import start.Main;
 
@@ -39,12 +41,6 @@ public class AuthorizationWindowController {
 
     @FXML
     private void handleMiAbout(ActionEvent event) throws Exception {
-
-        stgAbout = new Stage();
-
-        createWindow(stgAbout, strNameAboutWindow,
-                FXMLLoader.load(getClass().getResource(strPathFxmlAboutWindow)));
-
 
         stgAbout.show();
 
@@ -96,16 +92,10 @@ public class AuthorizationWindowController {
 
             if(curUser.getPassword().equals(strStandartPassword)){
 
-                FirstEntry(stgAdmin);
-                addCloseHandler(stgFirstEntry);
                 stgFirstEntry.showAndWait();
 
             }
 
-            stgAdmin = new Stage();
-
-            createWindow(stgAdmin, strNameAdminWindow,
-                    FXMLLoader.load(getClass().getResource(strPathFxmlAdminWindow)));
 
             stgAdmin.show();
             stgAuthorization.close();
@@ -121,16 +111,10 @@ public class AuthorizationWindowController {
 
             if(curUser.getPassword().equals(strStandartPassword)){
 
-                FirstEntry(stgAdmin);
-                addCloseHandler(stgFirstEntry);
                 stgFirstEntry.showAndWait();
 
             }
 
-            stgUser = new Stage();
-
-            createWindow(stgUser,strNameUserWindow,
-                    FXMLLoader.load(getClass().getResource(Main.strPathFxmlUserWindow)));
 
             stgUser.show();
             stgAuthorization.close();
@@ -144,20 +128,43 @@ public class AuthorizationWindowController {
     @FXML
     private void initialize() throws Exception{
 
-        tryCounter = new TryCounter(arrayUsers.getUsers());
-
-
-
-        //System.out.println("init");
-
-    }
-
-    private void FirstEntry(Stage stgAdminOrUser) throws Exception{
-
+        stgAdmin = new Stage();
+        stgUser = new Stage();
         stgFirstEntry = new Stage();
+        stgAbout = new Stage();
+        stgChangePassword = new Stage();
+
+        createWindow(stgAdmin, strNameAdminWindow,
+                FXMLLoader.load(getClass().getResource(strPathFxmlAdminWindow)));
+
+
+        createWindow(stgUser,strNameUserWindow,
+                FXMLLoader.load(getClass().getResource(Main.strPathFxmlUserWindow)));
+
 
         createWindow(stgFirstEntry,strNameFirstEntryWindow,
                 FXMLLoader.load(getClass().getResource(strPathFxmlFirstEntryWindow)));
+
+        addCloseHandler(stgFirstEntry);
+
+        setModalWindow(stgFirstEntry);
+
+        createWindow(stgAbout, strNameAboutWindow,
+                FXMLLoader.load(getClass().getResource(strPathFxmlAboutWindow)));
+
+        setModalWindow(stgAbout);
+
+        createWindow(stgChangePassword, strNameChangePassword,
+                FXMLLoader.load(getClass().getResource(strPathFxmlChangePasswordWindow)));
+
+        setModalWindow(stgChangePassword);
+
+        stgAuthorization.addEventHandler(WindowEvent.WINDOW_SHOWING, new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent windowEvent) {
+                tryCounter = new TryCounter(arrayUsers.getUsers());
+            }
+        });
 
     }
 

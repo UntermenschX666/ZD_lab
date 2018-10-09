@@ -31,6 +31,10 @@ public class ChangePasswordWindowController {
     @FXML
     private Button btnClose;
 
+    private final String strWrongPassword = "Wrong old password";
+    private final String strRestPassword = "Password does not comply with restriction";
+    private final String strDuplicatePassword = "Password does not match";
+
     @FXML
     private void handleBtnChange(ActionEvent event) {
 
@@ -40,14 +44,14 @@ public class ChangePasswordWindowController {
 
         if(!strOldPassword.equals(curUser.getPassword())){
 
-            lblMessege.setText("Wrong old password");
+            lblMessege.setText(strWrongPassword);
 
             return;
         }
 
         if(!strNewPassword.equals(strConfirmPassword)){
 
-            lblMessege.setText("Password does not match");
+            lblMessege.setText(strDuplicatePassword);
 
             return;
         }
@@ -57,7 +61,7 @@ public class ChangePasswordWindowController {
             PasswordParser passwordParser = new PasswordParser(strNewPassword);
             if(!passwordParser.isCorrectPassword(curUser.getUserName())){
 
-                lblMessege.setText("Password does not comply with restriction");
+                lblMessege.setText(strRestPassword);
 
                 return;
 

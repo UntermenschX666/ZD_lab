@@ -25,6 +25,10 @@ public class FirstEntryWindowController {
     @FXML
     private Button btnNext;
 
+    private final String strRestPassword = "Password does not comply with restriction";
+    private final String strDuplicatePassword = "Password does not match";
+
+
     @FXML
     private void handleBtnNext(ActionEvent event) {
 
@@ -33,7 +37,7 @@ public class FirstEntryWindowController {
 
         if(!strNewPassword.equals(strConfirmPassword)){
 
-            lblMessege.setText("Password does not match");
+            lblMessege.setText(strDuplicatePassword);
 
             return;
         }
@@ -43,7 +47,7 @@ public class FirstEntryWindowController {
             PasswordParser passwordParser = new PasswordParser(strNewPassword);
             if(!passwordParser.isCorrectPassword(curUser.getUserName())){
 
-                lblMessege.setText("Password does not comply with restriction");
+                lblMessege.setText(strRestPassword);
 
                 return;
 

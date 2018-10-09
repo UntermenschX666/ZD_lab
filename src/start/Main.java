@@ -7,15 +7,11 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import objects.ArrayUsers;
-import objects.UserForSerialize;
 import objects.UserForVisual;
 
 import java.io.File;
@@ -89,10 +85,9 @@ public class Main extends Application {
 
     }
 
-    public static void setModalWindow(Stage stgModalWindow, Stage stgOwner){
+    public static void setModalWindow(Stage stgModalWindow){
 
-        stgModalWindow.initModality(Modality.WINDOW_MODAL);
-        stgModalWindow.initOwner(stgOwner);
+        stgModalWindow.initModality(Modality.APPLICATION_MODAL);
 
     }
 

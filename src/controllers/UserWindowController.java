@@ -1,13 +1,12 @@
 package controllers;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import start.Main;
+import javafx.stage.WindowEvent;
 
 import static start.Main.*;
 
@@ -22,15 +21,10 @@ public class UserWindowController {
     @FXML
     private Label lblRestriction;
 
+    private String strBufferPassword;
+
     @FXML
     private void handleMiAbout(ActionEvent event) throws Exception {
-
-        stgAbout = new Stage();
-
-        createWindow(stgAbout, strNameAboutWindow,
-                FXMLLoader.load(getClass().getResource(strPathFxmlAboutWindow)));
-
-        setModalWindow(stgAbout,stgUser);
 
         stgAbout.show();
 
@@ -39,12 +33,7 @@ public class UserWindowController {
     @FXML
     private void handleMiChangePassword(ActionEvent event) throws Exception{
 
-        stgChangePassword = new Stage();
-
-        createWindow(stgChangePassword, strNameChangePassword,
-                FXMLLoader.load(getClass().getResource(strPathFxmlChangePasswordWindow)));
-
-        setModalWindow(stgChangePassword,stgUser);
+        strBufferPassword = curUser.getPassword();
 
         stgChangePassword.show();
     }
@@ -52,6 +41,15 @@ public class UserWindowController {
     @FXML
     private void handleBtnEndSession(ActionEvent event) throws Exception {
 
+        //Костыль(Похорошему нужно создать окно для сохранения настроек пользователя, но мне похуй, это лаба в конце концов)
+        if(!curUser.getPassword().equals(strBufferPassword)) {
+
+            if (!arrayUsers.serializeUsers(fUsersFile)) {
+                Platform.exit();
+                System.exit(0);
+            }
+
+        }
         stgAuthorization.show();
         stgUser.close();
 
@@ -60,13 +58,19 @@ public class UserWindowController {
     @FXML
     private void initialize() throws Exception{
 
-        lblUserName.setText(curUser.getUserName());
 
-        if(curUser.isRestriction())
-            lblRestriction.setText("Yes");
-        else
-            lblRestriction.setText("No");
+        stgUser.addEventHandler(WindowEvent.WINDOW_SHOWING, new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent windowEvent) {lblUserName.setText(curUser.getUserName());
 
+                if(curUser.isRestriction())
+                    lblRestriction.setText("Yes");
+                else
+                    lblRestriction.setText("No");
+            }
+        });
+
+        //костыль
 
     }
 

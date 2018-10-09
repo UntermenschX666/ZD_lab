@@ -95,7 +95,6 @@ public class ArrayUsers {
 
         return true;
     }
-    //Костыль в виде converToVisualUsers()
     public boolean serializeUsers(File file){
 
         convertToSerializeUsers();
@@ -112,6 +111,7 @@ public class ArrayUsers {
 
         }
 
+        //костыль
         convertToVisualUsers();
 
         return true;
@@ -170,6 +170,9 @@ public class ArrayUsers {
 
         for(User user : arrReplacment)
             add(user);
+
+        //костыль
+        convertToVisualUsers();
 
     }
 
