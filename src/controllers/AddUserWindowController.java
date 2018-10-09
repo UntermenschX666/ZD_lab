@@ -83,13 +83,8 @@ public class AddUserWindowController {
 
         if(strUserName.length()<2)
             return false;
-        /*
-        for(int i = 0; i < strUserName.length(); i++){
 
-
-
-        }*/
-        if(!strUserName.matches("^[a-zA-z0-9]+$"))
+        if(!strUserName.matches("^[a-z0-9]+$"))
             return false;
 
 

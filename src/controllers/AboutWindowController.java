@@ -15,7 +15,6 @@ public class AboutWindowController {
     @FXML
     void handleBtnClose(ActionEvent event) {
 
-        stgAuthorization.show();
         stgAbout.close();
 
     }

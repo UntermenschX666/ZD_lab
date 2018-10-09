@@ -53,16 +53,6 @@ public class ArrayUsers {
 
     }
 
-    public void test(){
-
-        arrUsers.add(new UserForSerialize("Test1","123ko",true,false));
-        arrUsers.add(new UserForSerialize("Test2","54sd",false,false));
-        arrUsers.add(new UserForSerialize("Test3","asdad3",false,false));
-        arrUsers.add(new UserForSerialize("Test4","asda3",false,false));
-        arrUsers.add(new UserForSerialize("Test5","aaasod1",false,false));
-
-    }
-
     public int getSize(){
 
         return arrUsers.size();
@@ -163,6 +153,12 @@ public class ArrayUsers {
     public ObservableList<User> getUsersForVisual(){
 
         convertToVisualUsers();
+
+        return arrUsers;
+
+    }
+
+    public ObservableList<User> getUsers(){
 
         return arrUsers;
 

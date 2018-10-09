@@ -13,7 +13,6 @@ public class UserForVisual implements User, Serializable {
     private SimpleStringProperty sspPassword;
     private SimpleBooleanProperty sbpBlock;
     private SimpleBooleanProperty sbpRestriction;
-    public int nTryCount;
 
     public UserForVisual(String strUserName, String strPassword,
                          boolean bBlock, boolean bRestriction){
@@ -22,7 +21,6 @@ public class UserForVisual implements User, Serializable {
         sspPassword = new SimpleStringProperty(strPassword);
         sbpBlock = new SimpleBooleanProperty(bBlock);
         sbpRestriction = new SimpleBooleanProperty(bRestriction);
-        nTryCount = 0;
 
     }
 
@@ -32,7 +30,6 @@ public class UserForVisual implements User, Serializable {
         sspPassword = new SimpleStringProperty(user.getPassword());
         sbpBlock = new SimpleBooleanProperty(user.isBlocked());
         sbpRestriction = new SimpleBooleanProperty(user.isRestriction());
-        nTryCount = 0;
 
     }
 
@@ -114,24 +111,6 @@ public class UserForVisual implements User, Serializable {
     public void setPassword(String strPassword){
 
         sspPassword.set(strPassword);
-
-    }
-
-    public int getTryCount(){
-
-        return nTryCount;
-
-    }
-
-    public void setTryCount(int nTryCount){
-
-        this.nTryCount = nTryCount;
-
-    }
-
-    public void addTryCount(){
-
-        this.nTryCount += 1;
 
     }
 

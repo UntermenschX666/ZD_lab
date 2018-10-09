@@ -28,10 +28,8 @@ public class Main extends Application {
     public static Stage stgAdmin;
     public static Stage stgAbout;
     public static Stage stgAddUser;
-    public static Stage stgRemoveUser;
     public static Stage stgSaveChanges;
     public static Stage stgFirstEntry;
-    public static Stage stgMessege;
     public static Stage stgChangePassword;
 
     public static File fUsersFile;
@@ -43,7 +41,6 @@ public class Main extends Application {
     public static final String strPathFxmlAddUserWindow = "/gui/AddUserWindow.fxml";
     public static final String strPathFxmlSaveChangesWindow = "/gui/SaveChangesWindow.fxml";
     public static final String strPathFxmlFirstEntryWindow = "/gui/FirstEntryWindow.fxml";
-    public static final String strPathFxmlMessegeWindow = "/gui/MessegeWindow.fxml";
     public static final String strPathFxmlChangePasswordWindow = "/gui/ChangePasswordWindow.fxml";
 
 
@@ -54,7 +51,6 @@ public class Main extends Application {
     public static final String strNameAddUserWindow = "Add new user";
     public static final String strNameSaveChengesWindow = "Save Changes";
     public static final String strNameFirstEntryWindow = "First Entry";
-    public static final String strNameMessegeWindow = "Messege";
     public static final String strNameChangePassword = "Change Password";
 
     public static final String strPathIcon = "/images/icon/icnMainWindow.png";
@@ -119,11 +115,17 @@ public class Main extends Application {
 
             arrayUsers.add(adminUser);
 
-            if (!arrayUsers.serializeUsers(fUsersFile)) {
-                System.out.println("Error serial"); //MessegeBox
-                return;
-            }
+            //if (!arrayUsers.serializeUsers(fUsersFile)) {
+            //    System.out.println("Error serial"); //MessegeBox
+            //    return;
+            //}
 
+        }
+        else{
+
+            if(!arrayUsers.deserializeUsers(fUsersFile)) {
+                System.out.println("Errr");
+            }
 
         }
 

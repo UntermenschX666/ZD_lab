@@ -18,12 +18,6 @@ public interface User {
 
  void setPassword(String strPassword);
 
- void setTryCount(int nTryCount);
-
- int getTryCount();
-
- void addTryCount();
-
  void setUser(User user);
 
 

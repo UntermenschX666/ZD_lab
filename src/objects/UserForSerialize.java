@@ -10,7 +10,6 @@ public class UserForSerialize implements User, Serializable {
     private String strPassword;
     private boolean bBlock;
     private boolean bRestriction;
-    private int nTryCount;
 
     public UserForSerialize(String strUserName, String strPassword,
                             boolean bBlock, boolean bRestriction){
@@ -19,7 +18,6 @@ public class UserForSerialize implements User, Serializable {
         this.strPassword = strPassword;
         this.bBlock = bBlock;
         this.bRestriction = bRestriction;
-        nTryCount = 0;
 
     }
 
@@ -29,7 +27,6 @@ public class UserForSerialize implements User, Serializable {
         strPassword = user.getPassword();
         bBlock = user.isBlocked();
         bRestriction = user.isRestriction();
-        nTryCount = 0;
 
     }
 
@@ -86,24 +83,6 @@ public class UserForSerialize implements User, Serializable {
     public void setPassword(String strPassword) {
 
         this.strPassword = strPassword;
-
-    }
-
-    public int getTryCount(){
-
-        return nTryCount;
-
-    }
-
-    public void setTryCount(int nTryCount){
-
-        this.nTryCount = nTryCount;
-
-    }
-
-    public void addTryCount(){
-
-        this.nTryCount += 1;
 
     }
 

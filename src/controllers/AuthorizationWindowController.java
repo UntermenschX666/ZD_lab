@@ -8,7 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import objects.Messege;
+import objects.TryCounter;
 import start.Main;
 
 import static start.Main.*;
@@ -28,8 +28,14 @@ public class AuthorizationWindowController {
     @FXML
     private Button btnSignIn;
 
-     @FXML
+    @FXML
     private Button btnExit;
+
+    private TryCounter tryCounter;
+
+    private final String strNotRegistered = "User with this name is not registered";
+    private final String strUserIsBlock = "You are blocked";
+    private final String strWrongPassword = "Wrong password";
 
     @FXML
     private void handleMiAbout(ActionEvent event) throws Exception {
@@ -54,32 +60,31 @@ public class AuthorizationWindowController {
     @FXML
     private void handleBtnSignIn(ActionEvent event) throws Exception {
 
+
         String strUserName = tfLogin.getText();
         String strPassword = tfPassword.getText();
-        //Когда нет времени придумывать пора вставлять уродские костыли
         curUser = arrayUsers.getUser(strUserName);
-
 
         if(curUser == null){
 
-            lblMessege.setText("User with this name is not registered");
+            lblMessege.setText(strNotRegistered);
 
             return;
         }
 
         if(curUser.isBlocked()){
 
-            lblMessege.setText("You are blocked");
+            lblMessege.setText(strUserIsBlock);
 
             return;
         }
 
         if(!curUser.getPassword().equals(strPassword)){
 
-            lblMessege.setText("Wrong password");
-            curUser.addTryCount();
+            lblMessege.setText(strWrongPassword);
+            tryCounter.addTryCountByUsername(curUser.getUserName());
 
-            if(curUser.getTryCount() == 3)
+            if(tryCounter.isTryCountEnd(curUser.getUserName()))
                 curUser.setBlock(true);
 
             return;
@@ -87,9 +92,6 @@ public class AuthorizationWindowController {
 
         if(curUser.getUserName().equals(strAdminName)){
 
-            curUser.setTryCount(0);
-
-            stgAuthorization.hide();
             refreshAuthorizationWindow();
 
             if(curUser.getPassword().equals(strStandartPassword)){
@@ -106,6 +108,7 @@ public class AuthorizationWindowController {
                     FXMLLoader.load(getClass().getResource(strPathFxmlAdminWindow)));
 
             stgAdmin.show();
+            stgAuthorization.close();
 
             return;
 
@@ -113,9 +116,7 @@ public class AuthorizationWindowController {
 
         if(curUser.getUserName().equals(strUserName)) {
 
-            curUser.setTryCount(0);
 
-            stgAuthorization.hide();
             refreshAuthorizationWindow();
 
             if(curUser.getPassword().equals(strStandartPassword)){
@@ -132,6 +133,7 @@ public class AuthorizationWindowController {
                     FXMLLoader.load(getClass().getResource(Main.strPathFxmlUserWindow)));
 
             stgUser.show();
+            stgAuthorization.close();
 
             return;
         }
@@ -142,12 +144,11 @@ public class AuthorizationWindowController {
     @FXML
     private void initialize() throws Exception{
 
-        //Messege msg = new Messege(stgAuthorization,"sd","test",strPathFxmlMessegeWindow,strPathIcon);
+        tryCounter = new TryCounter(arrayUsers.getUsers());
 
-        if(!arrayUsers.deserializeUsers(fUsersFile)) {
-            //System.out.println("Error deserial");
-            //messegebox
-        }
+
+
+        //System.out.println("init");
 
     }
 

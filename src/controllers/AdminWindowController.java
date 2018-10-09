@@ -4,7 +4,6 @@ import interfaces.User;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -59,6 +58,7 @@ public class AdminWindowController {
         createWindow(stgAbout, strNameAboutWindow,
                 FXMLLoader.load(getClass().getResource(strPathFxmlAboutWindow)));
 
+        setModalWindow(stgAbout,stgAdmin);
 
         stgAbout.show();
 

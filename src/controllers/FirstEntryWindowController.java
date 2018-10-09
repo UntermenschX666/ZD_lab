@@ -58,5 +58,4 @@ public class FirstEntryWindowController {
 
     }
 
-    //setOnCloseRequest(e -> Platform.exit());
 }

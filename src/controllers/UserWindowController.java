@@ -30,6 +30,7 @@ public class UserWindowController {
         createWindow(stgAbout, strNameAboutWindow,
                 FXMLLoader.load(getClass().getResource(strPathFxmlAboutWindow)));
 
+        setModalWindow(stgAbout,stgUser);
 
         stgAbout.show();
 
@@ -49,7 +50,7 @@ public class UserWindowController {
     }
 
     @FXML
-    private void handleBtnEndSession(ActionEvent event) {
+    private void handleBtnEndSession(ActionEvent event) throws Exception {
 
         stgAuthorization.show();
         stgUser.close();

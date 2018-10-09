@@ -1,7 +1,6 @@
 package controllers;
 
-import interfaces.User;
-import javafx.collections.ObservableList;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -31,8 +30,10 @@ public class SaveChangesWindowController {
     @FXML
     void handleBtnYes(ActionEvent event) {
 
-        arrayUsers.serializeUsers(fUsersFile);
-        //messegebox
+        if(!arrayUsers.serializeUsers(fUsersFile)){
+            Platform.exit();
+            System.exit(0);
+        }
 
         stgSaveChanges.close();
         stgAdmin.close();
