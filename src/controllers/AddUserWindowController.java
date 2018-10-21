@@ -33,7 +33,7 @@ public class AddUserWindowController {
     @FXML
     private void handleBtnAdd(ActionEvent event) {
 
-        String strUserName = tfUserName.getText();
+        String strUserName = tfUserName.getText().toLowerCase();
         String strPassword = strStandartPassword;
         boolean bBlock = chbBlock.isSelected();
         boolean bRestriction = chbRestriction.isSelected();

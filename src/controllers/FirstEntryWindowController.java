@@ -35,6 +35,8 @@ public class FirstEntryWindowController {
         String strNewPassword = tfNewPassword.getText();
         String strConfirmPassword = tfConfirmPassword.getText();
 
+        refreshFields();
+
         if(!strNewPassword.equals(strConfirmPassword)){
 
             lblMessege.setText(strDuplicatePassword);
@@ -59,6 +61,13 @@ public class FirstEntryWindowController {
         arrayUsers.replaceUser(curUser);
 
         stgFirstEntry.close();
+
+    }
+
+    private void refreshFields(){
+
+       tfNewPassword.setText("");
+       tfConfirmPassword.setText("");
 
     }
 
