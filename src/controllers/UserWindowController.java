@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.WindowEvent;
+import objects.MyCrypt;
 import objects.PasswordParser;
 
 import static start.Main.*;
@@ -63,9 +64,11 @@ public class UserWindowController {
         stgUser.addEventHandler(WindowEvent.WINDOW_SHOWING, new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent windowEvent) {
-                lblUserName.setText(curUser.getUserName());
 
-                PasswordParser passwordParser =new PasswordParser(curUser.getPassword());
+                lblUserName.setText(curUser.getUserName());
+                MyCrypt myCrypt = new MyCrypt(3);
+
+                PasswordParser passwordParser = new PasswordParser(myCrypt.decrypt(curUser.getPassword()));
 
                 if(curUser.isRestriction())
                     lblRestriction.setText("Yes");

@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import objects.MyCrypt;
 import objects.PasswordParser;
 
 import static start.Main.arrayUsers;
@@ -32,8 +33,11 @@ public class FirstEntryWindowController {
     @FXML
     private void handleBtnNext(ActionEvent event) {
 
+
+        MyCrypt myCrypt = new MyCrypt(3);
         String strNewPassword = tfNewPassword.getText();
         String strConfirmPassword = tfConfirmPassword.getText();
+        String strEncryptPassword = "";
 
         refreshFields();
 
@@ -57,7 +61,9 @@ public class FirstEntryWindowController {
 
         }
 
-        curUser.setPassword(strNewPassword);
+
+        strEncryptPassword = myCrypt.encrypt(strNewPassword);
+        curUser.setPassword(strEncryptPassword);
         arrayUsers.replaceUser(curUser);
 
         stgFirstEntry.close();

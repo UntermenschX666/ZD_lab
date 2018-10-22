@@ -1,5 +1,5 @@
 package interfaces;
-//в Userах вставлена ненужная переменная придумай как от нее избавится например с помощью нового класса TryCounter
+//пассы в юзере теперь валяются в зашифрованом виде
 public interface User {
 
  String getUserName();
