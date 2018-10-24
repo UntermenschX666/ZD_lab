@@ -69,11 +69,15 @@ public class MyCrypt {
 
         int[] arrEncypted = getInts(strEncrypted);
         int[] arrResult = new int[arrEncypted.length];
-        for(int i = 0; i < arrEncypted.length;i++){
 
-            arrResult[i] =~ arrEncypted[i];
+        for(int i = 0; i < arrEncypted.length-1;i++){
+
+            arrResult[i+1] = arrEncypted[i]^arrEncypted[i+1];
 
         }
+
+        arrResult[0] = arrEncypted[0]^arrResult[arrEncypted.length-1];
+
 
         return intToString(arrResult);
     }
@@ -82,9 +86,12 @@ public class MyCrypt {
 
         int[] arrDecrypted = getInts(strDecrypted);
         int[] arrResult = new int[arrDecrypted.length];
-        for(int i = 0; i < arrDecrypted.length;i++){
 
-            arrResult[i] = ~arrDecrypted[i];
+        arrResult[0] = arrDecrypted[0]^arrDecrypted[arrDecrypted.length-1];
+
+        for(int i = 0; i < arrDecrypted.length-1;i++){
+
+            arrResult[i+1] = arrResult[i]^arrDecrypted[i+1];
 
         }
 
