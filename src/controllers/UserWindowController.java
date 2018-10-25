@@ -7,7 +7,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.WindowEvent;
-import objects.MyCrypt;
 import objects.PasswordParser;
 
 import static start.Main.*;

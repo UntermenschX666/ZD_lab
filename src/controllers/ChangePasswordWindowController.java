@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
-import objects.MyCrypt;
 import objects.PasswordParser;
 
 import static start.Main.arrayUsers;

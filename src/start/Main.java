@@ -12,7 +12,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import objects.ArrayUsers;
-import objects.MyCrypt;
 import objects.UserForVisual;
 
 import java.io.File;
