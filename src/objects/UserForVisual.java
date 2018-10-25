@@ -12,10 +12,12 @@ public class UserForVisual implements User, Serializable {
     private SimpleStringProperty sspPassword;
     private SimpleBooleanProperty sbpBlock;
     private SimpleBooleanProperty sbpRestriction;
+    private MyCrypt myCrypt;
 
     public UserForVisual(String strUserName, String strPassword,
                          boolean bBlock, boolean bRestriction){
 
+        myCrypt = new MyCrypt(3);
         sspUserName = new SimpleStringProperty(strUserName);
         sspPassword = new SimpleStringProperty(strPassword);
         sbpBlock = new SimpleBooleanProperty(bBlock);
@@ -24,7 +26,7 @@ public class UserForVisual implements User, Serializable {
     }
 
     public UserForVisual(User user){
-
+        myCrypt = new MyCrypt(3);
         sspUserName = new SimpleStringProperty(user.getUserName());
         sspPassword = new SimpleStringProperty(user.getPassword());
         sbpBlock = new SimpleBooleanProperty(user.isBlocked());

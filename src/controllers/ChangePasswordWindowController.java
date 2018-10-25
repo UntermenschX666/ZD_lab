@@ -39,15 +39,13 @@ public class ChangePasswordWindowController {
     @FXML
     private void handleBtnChange(ActionEvent event) {
 
-        MyCrypt myCrypt = new MyCrypt(3);
         String strOldPassword = tfOldPassword.getText();
         String strNewPassword = tfNewPassword.getText();
         String strConfirmPassword = tfConfirmPassword.getText();
-        String strEncryptPassword = "";
 
         refreshFields();
 
-        if(!strOldPassword.equals(myCrypt.decrypt(curUser.getPassword()))){
+        if(!strOldPassword.equals(curUser.getPassword())){
 
             lblMessege.setText(strWrongPassword);
 
@@ -74,8 +72,8 @@ public class ChangePasswordWindowController {
 
         }
 
-        strEncryptPassword = myCrypt.encrypt(strNewPassword);
-        curUser.setPassword(strEncryptPassword);       arrayUsers.replaceUser(curUser);
+        curUser.setPassword(strNewPassword);
+        arrayUsers.replaceUser(curUser);
 
         stgChangePassword.close();
 

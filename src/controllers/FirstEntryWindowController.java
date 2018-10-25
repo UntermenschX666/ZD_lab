@@ -34,10 +34,8 @@ public class FirstEntryWindowController {
     private void handleBtnNext(ActionEvent event) {
 
 
-        MyCrypt myCrypt = new MyCrypt(3);
         String strNewPassword = tfNewPassword.getText();
         String strConfirmPassword = tfConfirmPassword.getText();
-        String strEncryptPassword = "";
 
         refreshFields();
 
@@ -62,8 +60,7 @@ public class FirstEntryWindowController {
         }
 
 
-        strEncryptPassword = myCrypt.encrypt(strNewPassword);
-        curUser.setPassword(strEncryptPassword);
+        curUser.setPassword(strNewPassword);
         arrayUsers.replaceUser(curUser);
 
         stgFirstEntry.close();

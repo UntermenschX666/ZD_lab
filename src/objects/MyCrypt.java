@@ -11,14 +11,20 @@ public class MyCrypt {
 
     public String encrypt(String strEncrypted){
 
-        String strResult = encryptByte(encryptCaesar(strEncrypted));
+        String strResult = "";
+
+        if(!strEncrypted.equals(""))
+            strResult = encryptByte(encryptCaesar(strEncrypted));
 
         return strResult;
     }
 
     public String decrypt(String strDecrypted){
 
-        String strResult = decryptCaesar(decryptByte(strDecrypted));
+        String strResult = "";
+
+        if(!strDecrypted.equals(""))
+            strResult = decryptCaesar(decryptByte(strDecrypted));
 
         return strResult;
 
@@ -86,6 +92,7 @@ public class MyCrypt {
 
         int[] arrDecrypted = getInts(strDecrypted);
         int[] arrResult = new int[arrDecrypted.length];
+
 
         arrResult[0] = arrDecrypted[0]^arrDecrypted[arrDecrypted.length-1];
 

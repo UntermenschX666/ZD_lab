@@ -3,17 +3,19 @@ package objects;
 import interfaces.User;
 import java.io.Serializable;
 
-//Костыль от бога вставлять лишнюю переменную просто пиздец, когда нет времени как придумать нормально TryCount
 public class UserForSerialize implements User, Serializable {
 
     private String strUserName;
     private String strPassword;
     private boolean bBlock;
     private boolean bRestriction;
+    private MyCrypt myCrypt;
 
     public UserForSerialize(String strUserName, String strPassword,
                             boolean bBlock, boolean bRestriction){
 
+
+        myCrypt = new MyCrypt(3);
         this.strUserName = strUserName;
         this.strPassword = strPassword;
         this.bBlock = bBlock;
@@ -22,7 +24,7 @@ public class UserForSerialize implements User, Serializable {
     }
 
     public  UserForSerialize(User user){
-
+        myCrypt = new MyCrypt(3);
         strUserName = user.getUserName();
         strPassword = user.getPassword();
         bBlock = user.isBlocked();
@@ -82,7 +84,7 @@ public class UserForSerialize implements User, Serializable {
 
     public void setPassword(String strPassword) {
 
-        this.strPassword = strPassword;
+        this.strPassword = myCrypt.encrypt(strPassword);
 
     }
 

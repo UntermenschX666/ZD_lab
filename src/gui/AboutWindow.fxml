@@ -9,26 +9,31 @@
     <children>
         <AnchorPane layoutY="93.0" maxHeight="341.0" maxWidth="700.0" prefHeight="200.0" prefWidth="440.0" style="-fx-background-color: #ffffff;">
          <children>
-            <Label layoutX="105.0" layoutY="21.0" prefHeight="33.0" prefWidth="230.0" text="Student: Kolesnikov N N" textFill="LIGHTSLATEGRAY">
+            <Label layoutX="105.0" layoutY="14.0" prefHeight="33.0" prefWidth="230.0" text="Student: Kolesnikov N N" textFill="LIGHTSLATEGRAY">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="105.0" layoutY="54.0" prefHeight="33.0" prefWidth="230.0" text="Group: A-13-15" textFill="LIGHTSLATEGRAY">
+            <Label layoutX="105.0" layoutY="47.0" prefHeight="33.0" prefWidth="230.0" text="Group: A-13-15" textFill="LIGHTSLATEGRAY">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="105.0" layoutY="87.0" prefHeight="33.0" prefWidth="230.0" text="Language: Java" textFill="LIGHTSLATEGRAY">
+            <Label layoutX="105.0" layoutY="80.0" prefHeight="33.0" prefWidth="230.0" text="Language: Java" textFill="LIGHTSLATEGRAY">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="btnClose" layoutX="105.0" layoutY="141.0" mnemonicParsing="false" onAction="#handleBtnClose" prefHeight="33.0" prefWidth="230.0" style="-fx-background-color: white; -fx-border-color: #778899; -fx-border-radius: 25;" stylesheets="@Button.css" text="Close" textFill="LIGHTSLATEGRAY">
+            <Button fx:id="btnClose" layoutX="105.0" layoutY="151.0" mnemonicParsing="false" onAction="#handleBtnClose" prefHeight="33.0" prefWidth="230.0" style="-fx-background-color: white; -fx-border-color: #778899; -fx-border-radius: 25;" stylesheets="@Button.css" text="Close" textFill="LIGHTSLATEGRAY">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
+            <Label layoutX="105.0" layoutY="113.0" prefHeight="33.0" prefWidth="230.0" text="Task №26" textFill="LIGHTSLATEGRAY">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </children>
         </AnchorPane>
         <Label layoutX="14.0" layoutY="30.0" prefHeight="50.0" prefWidth="183.0" text="Lab Work" textFill="WHITE">

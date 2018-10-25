@@ -10,7 +10,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import objects.MyCrypt;
 import objects.TryCounter;
 import start.Main;
 
@@ -57,10 +56,8 @@ public class AuthorizationWindowController {
     @FXML
     private void handleBtnSignIn(ActionEvent event) throws Exception {
 
-        MyCrypt myCrypt = new MyCrypt(3);
         String strUserName = tfLogin.getText();
         String strPassword = tfPassword.getText();
-        String strDecryptedPassword = "";
 
         curUser = arrayUsers.getUser(strUserName);
 
@@ -78,9 +75,7 @@ public class AuthorizationWindowController {
             return;
         }
 
-        strDecryptedPassword = myCrypt.decrypt(curUser.getPassword());
-
-        if(!strDecryptedPassword.equals(strPassword)){
+        if(!curUser.getPassword().equals(strPassword)){
 
             lblMessege.setText(strWrongPassword);
             tryCounter.addTryCountByUsername(curUser.getUserName());

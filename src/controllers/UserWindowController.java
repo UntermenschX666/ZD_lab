@@ -66,9 +66,8 @@ public class UserWindowController {
             public void handle(WindowEvent windowEvent) {
 
                 lblUserName.setText(curUser.getUserName());
-                MyCrypt myCrypt = new MyCrypt(3);
 
-                PasswordParser passwordParser = new PasswordParser(myCrypt.decrypt(curUser.getPassword()));
+                PasswordParser passwordParser = new PasswordParser(curUser.getPassword());
 
                 if(curUser.isRestriction())
                     lblRestriction.setText("Yes");
