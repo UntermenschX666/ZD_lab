@@ -17,7 +17,7 @@ public class UserForSerialize implements User, Serializable {
 
         myCrypt = new MyCrypt(3);
         this.strUserName = strUserName;
-        this.strPassword = strPassword;
+        setPassword(strPassword);
         this.bBlock = bBlock;
         this.bRestriction = bRestriction;
 
@@ -36,6 +36,11 @@ public class UserForSerialize implements User, Serializable {
 
         return  strUserName;
 
+    }
+
+    public String getDecryptedPassword(){
+
+        return myCrypt.decrypt(strPassword);
     }
 
     public String getPassword() {

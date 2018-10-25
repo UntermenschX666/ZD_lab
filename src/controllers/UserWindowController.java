@@ -66,7 +66,7 @@ public class UserWindowController {
 
                 lblUserName.setText(curUser.getUserName());
 
-                PasswordParser passwordParser = new PasswordParser(curUser.getPassword());
+                PasswordParser passwordParser = new PasswordParser(curUser.getDecryptedPassword());
 
                 if(curUser.isRestriction())
                     lblRestriction.setText("Yes");

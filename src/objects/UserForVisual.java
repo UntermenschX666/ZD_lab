@@ -19,7 +19,7 @@ public class UserForVisual implements User, Serializable {
 
         myCrypt = new MyCrypt(3);
         sspUserName = new SimpleStringProperty(strUserName);
-        sspPassword = new SimpleStringProperty(strPassword);
+        setPassword(strPassword);
         sbpBlock = new SimpleBooleanProperty(bBlock);
         sbpRestriction = new SimpleBooleanProperty(bRestriction);
 
@@ -43,6 +43,12 @@ public class UserForVisual implements User, Serializable {
     public String getPassword() {
 
         return sspPassword.get();
+
+    }
+
+    public String getDecryptedPassword(){
+
+        return myCrypt.decrypt(sspPassword.get());
 
     }
 
@@ -111,7 +117,7 @@ public class UserForVisual implements User, Serializable {
 
     public void setPassword(String strPassword){
 
-        sspPassword.set(strPassword);
+        sspPassword = new SimpleStringProperty(myCrypt.encrypt(strPassword));
 
     }
 
