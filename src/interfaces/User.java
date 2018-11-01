@@ -6,7 +6,6 @@ public interface User {
 
  String getPassword();
 
- String getDecryptedPassword();
 
  boolean isBlocked();
 

@@ -44,7 +44,7 @@ public class ChangePasswordWindowController {
 
         refreshFields();
 
-        if(!strOldPassword.equals(curUser.getDecryptedPassword())){
+        if(!strOldPassword.equals(curUser.getPassword())){
 
             lblMessege.setText(strWrongPassword);
 

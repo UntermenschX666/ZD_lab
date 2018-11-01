@@ -75,7 +75,7 @@ public class AuthorizationWindowController {
             return;
         }
 
-        if(!curUser.getDecryptedPassword().equals(strPassword)){
+        if(!curUser.getPassword().equals(strPassword)){
 
             lblMessege.setText(strWrongPassword);
             tryCounter.addTryCountByUsername(curUser.getUserName());
@@ -90,7 +90,7 @@ public class AuthorizationWindowController {
 
             refreshAuthorizationWindow();
 
-            if(curUser.getDecryptedPassword().equals(strStandartPassword)){
+            if(curUser.getPassword().equals(strStandartPassword)){
 
                 stgFirstEntry.showAndWait();
 
@@ -109,7 +109,7 @@ public class AuthorizationWindowController {
 
             refreshAuthorizationWindow();
 
-            if(curUser.getDecryptedPassword().equals(strStandartPassword)){
+            if(curUser.getPassword().equals(strStandartPassword)){
 
                 stgFirstEntry.showAndWait();
 
