@@ -1,10 +1,12 @@
 package controllers;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.stage.WindowEvent;
 import objects.PasswordParser;
 
 import static start.Main.arrayUsers;
@@ -59,7 +61,7 @@ public class FirstEntryWindowController {
         }
 
 
-        curUser.setPassword(strNewPassword);
+        curUser.setEncryptedPassword(strNewPassword);
         arrayUsers.replaceUser(curUser);
 
         stgFirstEntry.close();
@@ -70,7 +72,9 @@ public class FirstEntryWindowController {
 
        tfNewPassword.setText("");
        tfConfirmPassword.setText("");
+       lblMessege.setText("");
 
     }
+
 
 }

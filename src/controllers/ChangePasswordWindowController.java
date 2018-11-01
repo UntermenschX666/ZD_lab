@@ -1,15 +1,15 @@
 package controllers;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.stage.WindowEvent;
 import objects.PasswordParser;
 
-import static start.Main.arrayUsers;
-import static start.Main.curUser;
-import static start.Main.stgChangePassword;
+import static start.Main.*;
 
 public class ChangePasswordWindowController {
 
@@ -44,7 +44,7 @@ public class ChangePasswordWindowController {
 
         refreshFields();
 
-        if(!strOldPassword.equals(curUser.getPassword())){
+        if(!strOldPassword.equals(curUser.getDecryptedPassword())){
 
             lblMessege.setText(strWrongPassword);
 
@@ -71,7 +71,7 @@ public class ChangePasswordWindowController {
 
         }
 
-        curUser.setPassword(strNewPassword);
+        curUser.setEncryptedPassword(strNewPassword);
         arrayUsers.replaceUser(curUser);
 
         stgChangePassword.close();
@@ -90,6 +90,7 @@ public class ChangePasswordWindowController {
         tfOldPassword.setText("");
         tfNewPassword.setText("");
         tfConfirmPassword.setText("");
+        lblMessege.setText("");
 
     }
 

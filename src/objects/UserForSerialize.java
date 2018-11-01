@@ -3,21 +3,22 @@ package objects;
 import interfaces.User;
 import java.io.Serializable;
 
+import static start.Main.strStandartPassword;
+
 public class UserForSerialize implements User, Serializable {
 
     private String strUserName;
     private String strPassword;
     private boolean bBlock;
     private boolean bRestriction;
-    private MyCrypt myCrypt;
+    private transient MyCrypt myCrypt;
 
-    public UserForSerialize(String strUserName, String strPassword,
-                            boolean bBlock, boolean bRestriction){
+    public UserForSerialize(String strUserName, boolean bBlock, boolean bRestriction){
 
 
         myCrypt = new MyCrypt(3);
         this.strUserName = strUserName;
-        this.strPassword = strPassword;
+        this.strPassword = strStandartPassword;
         this.bBlock = bBlock;
         this.bRestriction = bRestriction;
 
@@ -42,6 +43,11 @@ public class UserForSerialize implements User, Serializable {
 
         return strPassword;
 
+    }
+
+    public String getDecryptedPassword(){
+
+        return myCrypt.decrypt(this.strPassword);
     }
 
     public boolean isBlocked(){
@@ -94,6 +100,12 @@ public class UserForSerialize implements User, Serializable {
         this.strPassword = user.getPassword();
         this.bBlock = user.isBlocked();
         this.bRestriction = user.isRestriction();
+
+    }
+
+    public void setEncryptedPassword(String strPassword){
+
+        this.strPassword = myCrypt.encrypt(strPassword);
 
     }
 

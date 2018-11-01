@@ -6,20 +6,22 @@ import javafx.beans.property.SimpleStringProperty;
 
 import java.io.Serializable;
 
+import static start.Main.strStandartPassword;
+
 public class UserForVisual implements User, Serializable {
 
     private SimpleStringProperty sspUserName;
     private SimpleStringProperty sspPassword;
     private SimpleBooleanProperty sbpBlock;
     private SimpleBooleanProperty sbpRestriction;
-    private MyCrypt myCrypt;
+    private transient MyCrypt myCrypt;
 
-    public UserForVisual(String strUserName, String strPassword,
+    public UserForVisual(String strUserName,
                          boolean bBlock, boolean bRestriction){
 
         myCrypt = new MyCrypt(3);
         sspUserName = new SimpleStringProperty(strUserName);
-        sspPassword = new SimpleStringProperty(strPassword);
+        sspPassword = new SimpleStringProperty(strStandartPassword);
         sbpBlock = new SimpleBooleanProperty(bBlock);
         sbpRestriction = new SimpleBooleanProperty(bRestriction);
 
@@ -46,6 +48,11 @@ public class UserForVisual implements User, Serializable {
 
     }
 
+    public String getDecryptedPassword(){
+
+        return myCrypt.decrypt(sspPassword.get());
+
+    }
 
     public boolean isBlocked(){
 
@@ -113,6 +120,12 @@ public class UserForVisual implements User, Serializable {
     public void setPassword(String strPassword){
 
         sspPassword = new SimpleStringProperty(strPassword);
+
+    }
+
+    public void setEncryptedPassword(String strPassword){
+
+        sspPassword = new SimpleStringProperty(myCrypt.encrypt(strPassword));
 
     }
 

@@ -105,7 +105,7 @@ public class Main extends Application {
 
         if (fUsersFile.length() == 0 ) {
 
-            User adminUser = new UserForVisual(strAdminName, strStandartPassword,
+            User adminUser = new UserForVisual(strAdminName,
                     false, true);
 
             arrayUsers.add(adminUser);

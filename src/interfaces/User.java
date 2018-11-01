@@ -6,6 +6,7 @@ public interface User {
 
  String getPassword();
 
+ String getDecryptedPassword();
 
  boolean isBlocked();
 
@@ -20,5 +21,7 @@ public interface User {
  void setPassword(String strPassword);
 
  void setUser(User user);
+
+ void setEncryptedPassword(String strPassword);
 
 }

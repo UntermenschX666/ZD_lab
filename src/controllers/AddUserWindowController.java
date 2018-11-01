@@ -34,7 +34,6 @@ public class AddUserWindowController {
     private void handleBtnAdd(ActionEvent event) {
 
         String strUserName = tfUserName.getText().toLowerCase();
-        String strPassword = strStandartPassword;
         boolean bBlock = chbBlock.isSelected();
         boolean bRestriction = chbRestriction.isSelected();
         int intSize = arrayUsers.getSize();
@@ -46,7 +45,7 @@ public class AddUserWindowController {
             return;
         }
 
-        arrayUsers.add(new UserForVisual(strUserName, strPassword, bBlock, bRestriction));
+        arrayUsers.add(new UserForVisual(strUserName, bBlock, bRestriction));
 
         if(intSize == arrayUsers.getSize()) {
 

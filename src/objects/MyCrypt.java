@@ -1,5 +1,7 @@
 package objects;
-
+/*
+* Осторожно! Крашится когда работает с пустой строкой
+* */
 public class MyCrypt {
 
     private final int lengthTable = 1103;
